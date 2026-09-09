@@ -129,7 +129,7 @@ $ownerHtml    = buildLayout2('receiver', $name, $email, $phone, $subject, $messa
 $autoText = "Hello $name,\n\n"
           . "Thank you for contacting MJR Fin Wealth Finance. We have received your enquiry and one of our advisors will get back to you soon.\n\n"
           . "Your message:\n\"$message\"\n\n"
-          . "Warm regards,\nThe MJR Fin Wealth Finance Team\n+91 87545 00310\ninvestalphagrow@gmail.com\n\n"
+          . "Warm regards,\nJayachandran Mahadevan\nMJR Fin Wealth Finance\n+91 96001 28287 | +91 86670 51251\nARN: 292318\nPartner RM: +91 90806 58353\n\n"
           . "Tip: if this confirmation landed in your Spam or Junk folder, just mark it as 'Not spam' so our future replies reach your inbox.";
 
 $autoHtml = buildLayout2('sender', $name, $email, $phone, $subject, $message, $logoSrc);
@@ -247,7 +247,7 @@ function emailButton($href, $label, $bg, $fg) {
 }
 
 function buildLayout2($role, $name, $email, $phone, $service, $message, $logo) {
-    $footer = '+91 87545 00310 &nbsp;·&nbsp; investalphagrow@gmail.com &nbsp;·&nbsp; Chennai, India';
+    $footer = 'Jayachandran Mahadevan &nbsp;·&nbsp; +91 96001 28287 &nbsp;·&nbsp; +91 86670 51251 &nbsp;·&nbsp; ARN: 292318 &nbsp;·&nbsp; Chennai, India';
 
     if ($role === 'receiver') {
         $eyebrow  = 'New Enquiry';
@@ -272,7 +272,7 @@ function buildLayout2($role, $name, $email, $phone, $service, $message, $logo) {
                   . emailRow('Phone',   htmlspecialchars($phone))
                   . emailRow('Date',    date('d M Y, h:i A') . ' IST')
                   . emailRow('Message', nl2br(htmlspecialchars($message)));
-        $cta      = emailButton('tel:+918754500310', 'Call +91 87545 00310', '#57A635', '#ffffff');
+        $cta      = emailButton('tel:+919600128287', 'Call +91 96001 28287', '#57A635', '#ffffff');
         $note     = 'You are receiving this because you contacted MJR Fin Wealth Finance. Simply reply to this email if you have more details.';
     }
 
