@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<link rel="icon" type="image/png" href="images/favicon.png">
+<title>Financial Calculators &mdash; MJR Fin Wealth Finance</title>
+<style>
+  :root {
+    --blue: #0E4DA4; --blue-light: #2E7CD6; --blue-bright: #8DC63F;
+    --green: #57A635; --navy: #0A2F63; --navy-deep: #071E42;
+    --text: #0b1b33; --muted: #5a6b82; --line: #e3ebf8; --surface: #f5f8ff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', system-ui, sans-serif; color: var(--text); background: #f0f5ff; line-height: 1.6; }
+  a { text-decoration: none; }
+
+  .topbar { background: var(--navy); color: #fff; padding: 12px 24px; display: flex; align-items: center; gap: 16px; position: sticky; top: 0; z-index: 40; }
+  .topbar .brand img { height: 72px; width: auto; display: block; object-fit: contain; }
+  .topbar .brand { font-size: 20px; font-weight: 800; color: #fff; }
+  .topbar .brand span { color: var(--green); }
+  .topbar .back { margin-left: auto; color: var(--green); font-weight: 700; font-size: 14px; }
+
+  .layout { display: grid; grid-template-columns: 260px 1fr; gap: 0; align-items: start; }
+  .sidebar { position: sticky; top: 96px; align-self: start; height: calc(100vh - 96px); overflow-y: auto; background: #fff; border-right: 1px solid var(--line); padding: 18px 12px; }
+  .side-link { display: flex; align-items: center; gap: 10px; padding: 11px 14px; border-radius: 10px; color: var(--muted); font-weight: 600; font-size: 14px; cursor: pointer; margin-bottom: 4px; transition: background .15s; }
+  .side-link i { font-size: 17px; width: 20px; text-align: center; }
+  .side-link:hover { background: var(--surface); color: var(--blue); }
+  .side-link.active { background: var(--blue); color: #fff; }
+
+  .content { padding: 28px clamp(18px, 4vw, 44px); max-width: 1100px; }
+  .calc-panel { display: none; }
+  .calc-panel.active { display: block; animation: fade .3s ease; }
+  @keyframes fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+  .calc-head { margin-bottom: 22px; }
+  .calc-head h1 { font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--blue); letter-spacing: -.02em; }
+  .calc-head p { color: var(--muted); max-width: 640px; }
+
+  .calc-body { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .card { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 24px; }
+  .card h3 { font-size: 15px; text-transform: uppercase; letter-spacing: .6px; color: var(--muted); margin-bottom: 18px; }
+
+  .field { margin-bottom: 20px; }
+  .field-label { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; gap: 10px; }
+  .field-label .lbl { font-size: 14px; font-weight: 600; color: var(--text); }
+  .field-label .val { font-size: 14px; font-weight: 800; color: var(--blue); white-space: nowrap; }
+  .slider { -webkit-appearance: none; width: 100%; height: 6px; border-radius: 6px; background: var(--line); outline: none; }
+  .slider::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%; background: var(--blue); cursor: pointer; border: 3px solid #fff; box-shadow: 0 2px 6px rgba(14,77,164,.4); }
+  .slider::-moz-range-thumb { width: 20px; height: 20px; border-radius: 50%; background: var(--blue); cursor: pointer; border: 3px solid #fff; }
+  .field-inputrow { display: flex; align-items: center; gap: 8px; margin-top: 10px; }
+  .field-inputrow .num { flex: 1; padding: 10px 12px; border: 1px solid var(--line); border-radius: 8px; font-size: 15px; font-weight: 600; color: var(--text); }
+  .field-inputrow .num:focus { border-color: var(--blue); outline: none; box-shadow: 0 0 0 .15rem rgba(14,77,164,.15); }
+  .field-inputrow .unit { font-size: 14px; font-weight: 700; color: var(--muted); }
+  .field-note { font-size: 12px; color: #a30000; margin-top: 6px; display: none; }
+  .field-na .field-note { display: block; }
+  .field-na .slider, .field-na .num, .field-na select.num { opacity: .5; pointer-events: none; }
+  .field-na .field-label .lbl { color: var(--muted); }
+
+  .result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .rcard { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+  .rcard.highlight { background: var(--blue); border-color: var(--blue); }
+  .rcard .rlabel { font-size: 12px; color: var(--muted); font-weight: 600; }
+  .rcard.highlight .rlabel { color: rgba(255,255,255,.85); }
+  .rcard .rval { font-size: 20px; font-weight: 800; color: var(--blue); margin-top: 4px; word-break: break-word; }
+  .rcard.highlight .rval { color: #fff; }
+
+  .chart-box { margin-top: 18px; }
+  .validation { margin-top: 14px; color: #a30000; font-size: 14px; font-weight: 600; display: none; }
+  .validation.show { display: block; }
+
+  .schedule-wrap { margin-top: 18px; max-height: 320px; overflow-y: auto; border: 1px solid var(--line); border-radius: 10px; }
+  table.sched { width: 100%; border-collapse: collapse; font-size: 13px; }
+  table.sched th, table.sched td { padding: 8px 10px; text-align: right; border-bottom: 1px solid var(--line); }
+  table.sched th { position: sticky; top: 0; background: var(--blue); color: #fff; font-weight: 700; }
+  table.sched td:first-child, table.sched th:first-child { text-align: center; }
+
+  .tax-inline { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .tax-inline .field { margin-bottom: 12px; }
+
+  footer { background: var(--navy-deep); color: rgba(255,255,255,.7); padding: 60px 0 30px; margin-top: 40px; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 44px; max-width: 1200px; margin-left: auto; margin-right: auto; padding: 0 24px; }
+  .footer-brand .brand { font-size: 24px; margin-bottom: 28px; display: inline-block; }
+  .footer-brand .brand img { filter: brightness(1.25); height: 72px; width: auto; display: block; object-fit: contain; }
+  .footer-brand p { font-size: 14px; max-width: 260px; }
+  .footer-col h4 { color: #fff; font-size: 15px; margin-bottom: 16px; }
+  .footer-col a { display: block; color: rgba(255,255,255,.7); font-size: 14px; padding: 6px 0; }
+  .footer-col a:hover { color: var(--green); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,.1); padding-top: 24px; font-size: 13px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; max-width: 1200px; margin-left: auto; margin-right: auto; padding-left: 24px; padding-right: 24px; }
+  .social-links { display: flex; gap: 12px; margin-top: 18px; }
+  .social-links a { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,.1); color: #fff; border-radius: 50%; font-size: 18px; text-decoration: none; transition: background .15s, color .15s, transform .15s; }
+  .social-links a:hover { background: var(--green); color: #ffffff; transform: translateY(-2px); }
+  @media (max-width: 1024px) {
+    .topbar .brand img { height: 64px; }
+    .footer-brand .brand img { height: 64px; }
+    .sidebar { top: 88px; height: calc(100vh - 88px); }
+  }
+  @media (max-width: 768px) {
+    .topbar { padding: 12px 20px; }
+    .topbar .brand img { height: 56px; }
+    .footer-brand .brand img { height: 56px; }
+    .sidebar { top: 80px; height: calc(100vh - 80px); }
+  }
+  @media (max-width: 980px) {
+    .layout { grid-template-columns: 1fr; }
+    .sidebar { position: static; height: auto; flex-direction: row; overflow-x: auto; white-space: nowrap; display: flex; border-right: 0; border-bottom: 1px solid var(--line); }
+    .side-link { margin-bottom: 0; }
+    .calc-body { grid-template-columns: 1fr; }
+    .result-grid { grid-template-columns: 1fr 1fr; }
+    .content { padding: 20px; }
+  }
+  @media (max-width: 640px) {
+    .topbar { padding: 10px 20px; }
+    .topbar .brand img { height: 48px; }
+    .footer-brand .brand img { height: 48px; }
+  }
+  @media (max-width: 480px) {
+    .topbar { padding: 10px 16px; }
+    .topbar .brand img { height: 42px; }
+    .footer-brand .brand img { height: 42px; }
+    .content { padding: 16px; }
+  }
+  @media (max-width: 360px) {
+    .topbar { padding: 8px 12px; }
+    .topbar .brand img { height: 36px; }
+    .footer-brand .brand img { height: 36px; }
+  }
+</style>
+</head>
+<body>
+  <div class="topbar">
+    <a href="index.html" class="brand"><img src="images/logo.png" alt="MJR Fin Wealth Finance" height="72" width="278"></a>
+    <a href="index.html" class="back">&#8592; Back to Home</a>
+  </div>
+  <div class="layout">
+    <nav class="sidebar" id="sidebar"></nav>
+    <main class="content" id="calc-root"></main>
+  </div>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html#home" class="brand"><img src="images/logo.png" alt="MJR Fin Wealth Finance logo" width="278" height="72"></a>
+        <p>Your trusted partner in wealth creation and financial security. Personalized guidance for every goal.</p>
+        <div class="social-links">
+          <a href="https://www.instagram.com/investalphagrow?igsh=MTl3aHd2YnFsZ2d3cg==" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="https://www.facebook.com/p/Invest-Alphagrow-61593113082585/" target="_blank" rel="noopener" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="index.html#about">About Us</a>
+        <a href="index.html#services">Services</a>
+        <a href="blogs/index.html">Blogs</a>
+        <a href="index.html#calculators">Calculator</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="index.html#services">Personal Financial Planning</a>
+        <a href="index.html#services">Mutual Fund Investment</a>
+        <a href="index.html#services">Child Education Investment</a>
+        <a href="index.html#services">Goal Based Investment</a>
+        <a href="index.html#services">Retirement Planning</a>
+        <a href="index.html#services">Health Insurance Plan</a>
+        <a href="index.html#services">Life Insurance Plan</a>
+        <a href="index.html#services">Emergency Fund</a>
+        <a href="index.html#services">Bonds</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="tel:+918754500310">+91 87545 00310</a>
+        <a href="mailto:investalphagrow@gmail.com">investalphagrow@gmail.com</a>
+        <a href="mailto:info@alphagrowwealth.in">info@alphagrowwealth.in</a>
+        <a href="mailto:support@alphagrowwealth.in">support@alphagrowwealth.in</a>
+        <a href="index.html#contact">Chennai, India</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&#169; 2026 MJR Fin Wealth Finance. All rights reserved.</span>
+      <span>Design and Developed By <a href="https://thecircledesigns.com/" style="text-decoration:none;color:inherit;display:inline;">Circle Designs</a></span>
+    </div>
+  </footer>
+
+  <script src="calculator/engine.js?v=3"></script>
+  <script src="calculator/format.js"></script>
+  <script src="calculator/charts.js"></script>
+  <script src="calculator/app.js"></script>
+</body>
+</html>

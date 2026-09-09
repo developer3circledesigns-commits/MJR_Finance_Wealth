@@ -1,0 +1,2202 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="apple-touch-icon" href="images/favicon.png">
+<title>MJR Fin Wealth Finance &mdash; Wealth Creation & Financial Security</title>
+<style>
+  :root {
+    --blue: #0E4DA4;
+    --blue-light: #2E7CD6;
+    --blue-bright: #8DC63F;
+    --green: #57A635;
+    --navy: #0A2F63;
+    --navy-deep: #071E42;
+    --text: #0b1b33;
+    --muted: #5a6b82;
+    --line: #e3ebf8;
+    --surface: #f5f8ff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  section[id] { scroll-margin-top: 86px; }
+  body { font-family: 'Segoe UI', system-ui, sans-serif; color: var(--text); background: #ffffff; line-height: 1.6; overflow-x: hidden; }
+  a { text-decoration: none; }
+  img { display: block; max-width: 100%; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- SCROLL REVEAL (fade-in-up, like layout-01) ---------- */
+  .anim { opacity: 0; transform: translateY(60px); transition: opacity 0.8s cubic-bezier(.22,1,.36,1), transform 0.8s cubic-bezier(.22,1,.36,1); }
+  .anim.visible { opacity: 1; transform: translateY(0); }
+  .anim-d1 { transition-delay: 0.1s; }
+  .anim-d2 { transition-delay: 0.2s; }
+  .anim-d3 { transition-delay: 0.3s; }
+  .anim-d4 { transition-delay: 0.4s; }
+  .anim-d5 { transition-delay: 0.5s; }
+  .anim-d6 { transition-delay: 0.6s; }
+  .svc-grid .svc-card:nth-child(3n+2),
+  .why-grid > *:nth-child(2n),
+  .testimonials .row > *:nth-child(3n+2) { transition-delay: 0.1s; }
+  .svc-grid .svc-card:nth-child(3n+3),
+  .why-grid > *:nth-child(3n),
+  .why-grid > *:nth-child(4n),
+  .testimonials .row > *:nth-child(3n+3) { transition-delay: 0.2s; }
+
+  /* ---------- NAV ---------- */
+  header { position: sticky; top: 0; left: 0; right: 0; z-index: 50; background: #fff; border: 0; border-radius: 0; }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 76px; padding: 0 24px; max-width: 100%; }
+  .brand { font-size: 22px; font-weight: 800; color: #fff; letter-spacing: -.02em; flex-shrink: 0; }
+  .brand span { color: var(--green); }
+  .brand-logo { height: 60px; width: auto; max-width: 220px; display: block; object-fit: contain; }
+  .nav-links { display: flex; gap: 30px; align-items: center; margin-left: auto; }
+  .nav-links a { color: #0b1b33; font-size: 15px; font-weight: 500; transition: color .15s ease; }
+  .nav-links a:hover { color: var(--blue); }
+  .nav-cta { padding: 10px 22px; background: var(--green); color: #ffffff !important; border-radius: 0; font-weight: 700; transition: transform .15s ease; }
+  .nav-cta:hover { transform: translateY(-1px); color: #ffffff; }
+  .menu-btn { display: none; background: none; border: 0; color: var(--blue); font-size: 26px; cursor: pointer; }
+  .nav-call { display: none; align-items: center; justify-content: center; width: 44px; height: 44px; margin-left: auto; background: var(--green); color: #ffffff; border-radius: 50%; font-size: 19px; flex-shrink: 0; }
+
+  /* ---------- HERO (09 Dark Blue) ---------- */
+  .hero { min-height: calc(100vh - 76px); display: flex; flex-direction: column; align-items: flex-start; justify-content: center; text-align: left; padding: 60px 24px 60px 64px; position: relative; overflow: hidden; background: linear-gradient(135deg, #0A2F63 0%, #0E4DA4 100%); color: #fff; }
+  .hero::before { content: ''; position: absolute; inset: 0;
+    background:
+      linear-gradient(rgba(10,47,99,.5), rgba(14,77,164,.45)),
+      url('images/hero_img-opt.png') center top/cover no-repeat; }
+  .hero .inner { position: relative; z-index: 1; max-width: 820px; margin: 0; }
+  .badge { display: inline-flex; align-items: center; gap: 8px; border: 1px solid rgb(255, 255, 255); color: var(--white); padding: 8px 16px; border-radius: 999px; font-size: 14px; font-weight: 600; margin-bottom: 26px; }
+  .badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--blue); }
+  .hero h1 { font-size: clamp(2.4rem, 6vw, 4.4rem); line-height: 1.08; letter-spacing: -0.02em; }
+  .hero h1 .bright { color: var(--blue-bright); }
+  .hero h1 .green { color: var(--green); -webkit-text-stroke: 1.5px #fff; paint-order: stroke fill; text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff; }
+  .hero p { font-size: clamp(1rem, 2vw, 1.2rem); color: rgba(255,255,255,.82); margin: 24px 0 40px; max-width: 620px; }
+  .hero .hero-tag { color: var(--white); font-weight: 700; font-size: clamp(1.05rem, 2vw, 1.35rem); margin: -8px 0 32px; }
+  .cta { display: flex; gap: 16px; justify-content: flex-start; flex-wrap: wrap; }
+  .hero .btn { border-radius: 0; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 16px 34px; border-radius: 12px; font-size: 16px; font-weight: 700; transition: transform .15s ease, box-shadow .15s ease; cursor: pointer; }
+  .btn-green { background: var(--green); color: #ffffff; }
+  .btn-green:hover { transform: translateY(-2px); }
+  .btn-ghost { border: 1px solid rgba(255,255,255,.4); color: #fff; }
+  .btn-ghost:hover { background: rgba(255,255,255,.08); }
+  .hero-trust { margin-top: 46px; display: flex; gap: 34px; color: rgba(255,255,255,.6); font-size: 14px; flex-wrap: wrap; justify-content: flex-start; }
+  .scroll { margin-top: 44px; color: rgba(255,255,255,.6); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; }
+
+  /* ---------- LOGOS ---------- */
+  .logos { background: #fff; padding: 44px 24px; text-align: center; }
+  .logos p { color: var(--muted); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 26px; }
+  .logo-row { display: flex; gap: 44px; justify-content: center; flex-wrap: wrap; color: #8b99ad; font-weight: 700; font-size: 16px; }
+
+  /* ---------- SECTIONS ---------- */
+  section.block { padding: 96px 0; }
+  .about { background: #ffffff; min-height: 100vh; display: flex; align-items: center; }
+  .section-head { text-align: center; max-width: 640px; margin: 0 auto 56px; }
+  .eyebrow { color: var(--green); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; font-size: 13px; }
+  .section-head h2 { font-size: clamp(1.9rem, 4vw, 2.8rem); color: var(--blue); letter-spacing: -0.02em; margin: 12px 0 14px; line-height: 1.15; }
+  .section-head .green { color: var(--green); }
+  .section-head p { color: var(--muted); font-size: 1.05rem; }
+
+  /* why choose us (03 dark glass) */
+  .why { background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 50%, var(--blue) 100%); position: relative; overflow: hidden; }
+  .why::before { content: ''; position: absolute; width: 520px; height: 520px; background: radial-gradient(circle, rgba(87,166,53,.14), transparent 70%); top: -160px; left: -160px; border-radius: 50%; pointer-events: none; }
+  .why::after { content: ''; position: absolute; width: 420px; height: 420px; background: radial-gradient(circle, rgba(87,166,53,.1), transparent 70%); bottom: -140px; right: -140px; border-radius: 50%; pointer-events: none; }
+  .why .container { position: relative; z-index: 1; }
+  .why .section-head h2 { color: #fff; }
+  .why .section-head .green { color: var(--green); }
+  .why .section-head p { color: rgba(255,255,255,.7); }
+  .why .eyebrow { color: var(--green); }
+  .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+  .w-card { background: rgba(255,255,255,.05); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,.1); padding: 30px 24px; position: relative; overflow: hidden; transition: transform .2s ease, border-color .2s ease; }
+  .w-card:hover { transform: translateY(-6px); border-color: rgba(87,166,53,.4); }
+  .w-card .glow { position: absolute; top: -36px; right: -36px; width: 100px; height: 100px; background: radial-gradient(circle, rgba(87,166,53,.15), transparent 70%); border-radius: 50%; transition: all .3s ease; pointer-events: none; }
+  .w-card:hover .glow { transform: scale(1.4); }
+  .w-card .ic { width: 52px; height: 52px; background: rgba(87,166,53,.15); border: 1px solid rgba(87,166,53,.3); display: flex; align-items: center; justify-content: center; font-size: 22px; color: var(--green); margin-bottom: 16px; }
+  .w-card h3 { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+  .w-card p { font-size: 13px; color: rgba(255,255,255,.6); line-height: 1.7; }
+  .why-banner { margin-top: 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .why-tile { position: relative; min-height: 200px; overflow: hidden; }
+  .why-tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .why-tile::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(7,30,66,.1), rgba(7,30,66,.85)); pointer-events: none; }
+  .why-tile .label { position: absolute; left: 24px; bottom: 20px; color: #fff; font-weight: 700; font-size: 17px; z-index: 1; }
+
+  /* services (04 dark navy) */
+  .services { background: var(--navy); color: #fff; }
+  .services .section-head h2 { color: #fff; }
+  .services .section-head p { color: rgba(255,255,255,.7); }
+  .services .section-head .green { color: var(--green); }
+  .svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: stretch; grid-auto-rows: 1fr; }
+  .svc-card { background: #123b70; border: 1px solid rgba(160,210,255,.28); border-radius: 0; overflow: hidden; position: relative; transition: transform .15s ease, box-shadow .15s ease; display: flex; flex-direction: column; height: 100%; }
+  .svc-card:hover { transform: translateY(-4px); box-shadow: 0 18px 38px rgba(0,0,0,.28); }
+  .svc-card .svc-icon { width: 54px; height: 54px; border-radius: 14px; background: rgba(87,166,53,.2); border: 1px solid rgba(197,245,143,.55); color: #d9ffad; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 16px; flex-shrink: 0; }
+  .svc-card .svc-body { padding: 24px; display: flex; flex-direction: column; flex: 1; }
+  .svc-card h3 { font-size: 18px; color: #fff; margin-bottom: 10px; }
+  .svc-card p { color: #f3f7ff; font-size: 15px; line-height: 1.65; }
+  .svc-card .link { display: inline-block; margin-top: auto; padding-top: 14px; color: #d9ffad; text-decoration: underline; text-decoration-color: rgba(217,255,173,.65); text-underline-offset: 4px; font-weight: 700; font-size: 14px; }
+  .svc-card.has-img { padding: 32px; min-height: 320px; justify-content: flex-end; }
+  .svc-card.has-img .svc-card-img { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; }
+  .svc-card.has-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6,13,26,.38) 0%, rgba(6,13,26,.62) 42%, rgba(6,13,26,.97) 100%); pointer-events: none; }
+  .svc-card.has-img .svc-body { position: relative; z-index: 1; justify-content: flex-end; }
+
+  /* calculators (02 featured hero) */
+  .calcs { background: #ffffff; }
+  .calc-featured { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: center; background: var(--blue); color: #fff; padding: 44px clamp(28px, 5vw, 56px); margin-bottom: 40px; position: relative; overflow: hidden; }
+  .calc-featured::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(55% 70% at 85% 15%, rgba(87,166,53,.2), transparent 60%); }
+  .calc-featured .cf-left, .calc-featured .cf-right { position: relative; z-index: 1; min-width: 0; }
+  .calc-featured .icon { width: 60px; height: 60px; border-radius: 0; background: rgba(87,166,53,.2); color: var(--green); display: flex; align-items: center; justify-content: center; font-size: 26px; margin-bottom: 18px; }
+  .calc-featured h3 { font-size: 1.6rem; margin-bottom: 10px; color: #fff; }
+  .calc-featured p { color: rgba(255,255,255,.8); font-size: 15px; line-height: 1.6; }
+  .calc-featured .open { display: inline-block; margin-top: 18px; background: var(--green); color: #ffffff; padding: 12px 28px; font-weight: 800; text-decoration: none; border-radius: 0; }
+  .calc-quick input { width: 100%; min-width: 0; max-width: 100%; box-sizing: border-box; padding: 13px 16px; margin-bottom: 14px; border: 0; border-radius: 0; font-size: 15px; color: #0A2F63; }
+  .calc-quick label { display: block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .6px; color: rgba(255,255,255,.75); margin-bottom: 6px; }
+  .calc-featured .cf-details { list-style: none; margin-top: 16px; padding: 0; }
+  .calc-featured .cf-details li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; line-height: 1.55; color: rgba(255,255,255,.85); margin-bottom: 8px; }
+  .calc-featured .cf-details li i { color: var(--green); font-size: 16px; line-height: 1.4; }
+  .calc-quick .result { background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2); padding: 14px 16px; font-size: 14px; overflow: hidden; }
+  .calc-quick .result strong { color: var(--green); font-size: 20px; display: block; margin-top: 4px; word-break: break-all; line-height: 1.3; }
+  .calc-quick .result .r-row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 9px 0; border-top: 1px solid rgba(255,255,255,.15); }
+  .calc-quick .result .r-row:first-child { border-top: 0; }
+  .calc-quick .result .r-row span { font-size: 13px; color: rgba(255,255,255,.82); }
+  .calc-quick .result .r-row strong { color: var(--green); font-size: 18px; margin-top: 0; }
+  .calc-quick .result .r-row.r-total strong { font-size: 22px; }
+  .calc-quick .calc-btn { margin-top: 16px; width: 100%; background: var(--green); color: #ffffff; border: 0; padding: 13px 16px; font-weight: 800; font-size: 15px; cursor: pointer; border-radius: 0; transition: background .15s ease; }
+  .calc-quick .calc-btn:hover { background: #4A8F2C; }
+  .calc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .calc-link { background: #fff; border: 1px solid var(--line); border-radius: 0; padding: 16px 20px; display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text); transition: transform .15s ease, box-shadow .15s ease; }
+  .calc-link:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(14,77,164,.12); }
+  .calc-link .dot { width: 34px; height: 34px; flex-shrink: 0; border-radius: 0; display: flex; align-items: center; justify-content: center; font-size: 15px; }
+  .calc-link span { font-size: 14px; font-weight: 600; }
+  .calc-link.active { border-color: var(--blue); box-shadow: 0 0 0 2px rgba(14,77,164,.15); }
+
+  .feat p { color: var(--muted); font-size: 15px; }
+
+  /* dashboard (unused - kept for reference)
+  .dashboard { background: var(--surface); }
+  .dash-wrap { max-width: 980px; margin: 0 auto; background: #fff; border-radius: 18px; border: 1px solid var(--line); box-shadow: 0 40px 80px rgba(14,77,164,.16); overflow: hidden; }
+  .chrome { display: flex; align-items: center; gap: 8px; padding: 14px 18px; background: #f5f8ff; border-bottom: 1px solid var(--line); }
+  .dot { width: 12px; height: 12px; border-radius: 50%; }
+  .dot.r { background: #ff5f57; } .dot.y { background: #febc2e; } .dot.g { background: #28c840; }
+  .url { flex: 1; margin-left: 14px; background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 6px 14px; font-size: 13px; color: var(--muted); }
+  .dash-body { padding: 28px; }
+  .kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 20px; }
+  .kpi { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px; }
+  .kpi strong { color: var(--blue); font-size: 22px; display: block; }
+  .kpi span { color: var(--muted); font-size: 13px; }
+  .chart { height: 200px; border-radius: 12px; overflow: hidden; position: relative; }
+  .chart img { width: 100%; height: 100%; object-fit: cover; }
+  */
+
+  /* stats */
+  .stats { background: var(--navy); color: #fff; }
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; text-align: center; }
+  .stat strong { font-size: clamp(1.8rem, 4vw, 2.6rem); color: #fff; display: block; }
+  .stat .green { color: var(--green); }
+  .stat span { color: rgba(255,255,255,.65); font-size: 15px; margin-top: 6px; display: inline-block; }
+
+  /* how it works */
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .steps-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
+  .step { text-align: center; padding: 28px; }
+  .step .num { width: 60px; height: 60px; margin: 0 auto 18px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--green)); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 800; box-shadow: 0 12px 26px rgba(14,77,164,.3); }
+  .step h3 { color: var(--blue); margin-bottom: 10px; }
+  .step p { color: var(--muted); font-size: 15px; }
+
+  /* about (02 centered timeline) */
+  .about .section-head h2 { color: var(--blue); }
+  .about .section-head .green { color: var(--green); }
+  .timeline { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; position: relative; }
+  .timeline::before { content: ''; position: absolute; top: 34px; left: 12%; right: 12%; height: 2px; background: linear-gradient(90deg, var(--blue), var(--green)); pointer-events: none; }
+  .t-step { text-align: center; padding: 0 10px; position: relative; }
+  .t-num { width: 68px; height: 68px; margin: 0 auto 20px; border-radius: 50%; background: #fff; border: 3px solid var(--blue); color: var(--blue); font-weight: 800; font-size: 22px; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; box-shadow: 0 8px 24px rgba(14,77,164,.15); transition: transform .15s ease, box-shadow .15s ease; }
+  .t-step:hover .t-num { transform: scale(1.08); box-shadow: 0 12px 32px rgba(14,77,164,.25); }
+  .t-step:nth-child(2) .t-num, .t-step:nth-child(4) .t-num { border-color: var(--green); color: var(--green); }
+  .t-step h3 { font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+  .t-step p { font-size: 14px; color: var(--muted); max-width: 220px; margin: 0 auto; }
+  .about-note { margin-top: 56px; background: transparent; border-left: 4px solid var(--green); padding: 24px 32px; text-align: center; }
+  .about-note p { color: var(--muted); font-size: 15px; max-width: 760px; margin: 0 auto; }
+  .about-note strong { color: var(--blue); }
+
+  /* FAQ / QUIZ (hybrid) */
+  .faq { background: #ffffff; }
+  .faq-body { max-width: 900px; margin: 0 auto; }
+  .mode-toggle { display: flex; justify-content: center; gap: 8px; background: var(--surface); padding: 6px; border-radius: 14px; max-width: 340px; margin: 0 auto 40px; }
+  .mode-btn { flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 20px; background: transparent; border: none; color: var(--muted); font-weight: 600; font-size: 14px; cursor: pointer; border-radius: 10px; transition: all .2s ease; }
+  .mode-btn.active { background: #fff; color: var(--blue); box-shadow: 0 4px 16px rgba(14,77,164,.1); }
+  .mode-btn i { font-size: 16px; }
+
+  .faq-mode { display: block; }
+  .faq-mode.hidden { display: none; }
+  .faq-list { display: grid; gap: 14px; }
+  .faq-card { background: #fff; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+  .faq-btn { width: 100%; display: flex; align-items: center; gap: 16px; padding: 20px 24px; background: transparent; border: none; text-align: left; font: inherit; cursor: pointer; }
+  .faq-btn .icon { width: 40px; height: 40px; min-width: 40px; display: flex; align-items: center; justify-content: center; background: var(--surface); color: var(--blue); border-radius: 10px; font-size: 18px; transition: all .2s; }
+  .faq-btn[aria-expanded="true"] .icon { background: var(--blue); color: #fff; }
+  .faq-btn h3 { flex: 1; font-size: 16px; font-weight: 600; color: var(--text); }
+  .faq-btn .arrow { color: var(--muted); transition: transform .2s; }
+  .faq-btn[aria-expanded="true"] .arrow { transform: rotate(180deg); color: var(--blue); }
+  .faq-panel { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
+  .faq-panel.open { padding: 0 24px 20px; max-height: 500px; }
+  .faq-panel p { color: var(--muted); font-size: 15px; line-height: 1.7; }
+
+  .quiz-mode { display: none; }
+  .quiz-mode.active { display: block; animation: faqFadeIn .3s ease; }
+  .quiz-q { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 32px; margin-bottom: 20px; box-shadow: 0 4px 16px rgba(14,77,164,.05); }
+  .quiz-q .q-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  .quiz-q .q-num { width: 36px; height: 36px; min-width: 36px; display: flex; align-items: center; justify-content: center; background: var(--blue); color: #fff; font-weight: 700; font-size: 14px; border-radius: 10px; }
+  .quiz-q h3 { font-size: 1.1rem; color: var(--text); }
+  .quiz-options { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 16px; }
+  .quiz-opt { padding: 16px; background: var(--surface); border: 2px solid var(--line); border-radius: 12px; cursor: pointer; transition: all .15s ease; text-align: left; font: inherit; }
+  .quiz-opt:hover { border-color: var(--green); background: #eef8e8; }
+  .quiz-opt.selected { border-color: var(--green); background: #eef8e8; color: var(--text); }
+  .quiz-opt.correct { border-color: var(--green); background: #eef8e8; }
+  .quiz-opt.incorrect { border-color: #e74c3c; background: #fdeaea; }
+  .quiz-feedback { display: none; padding: 16px; background: #eef8e8; border-radius: 10px; color: #488c2d; font-size: 14px; line-height: 1.6; }
+  .quiz-feedback.show { display: block; animation: slideDown .3s ease; }
+  .quiz-feedback.incorrect { background: #fdeaea; color: #c0392b; }
+  .quiz-nav { display: flex; justify-content: space-between; margin-top: 24px; }
+  .quiz-nav button { padding: 12px 28px; background: var(--blue); color: #fff; font-weight: 600; border: none; border-radius: 8px; cursor: pointer; transition: background .2s; }
+  .quiz-nav button:disabled { background: #c5d4e8; cursor: not-allowed; }
+  .quiz-nav button:hover:not(:disabled) { background: var(--navy); }
+  .quiz-progress { text-align: center; margin-top: 20px; font-size: 14px; color: var(--muted); }
+  .quiz-progress .bar { height: 6px; background: var(--line); border-radius: 3px; overflow: hidden; margin-bottom: 8px; }
+  .quiz-progress .fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--blue), var(--green)); transition: width .3s ease; }
+  .quiz-result { text-align: center; margin-top: 32px; padding: 32px; background: var(--surface); border-radius: 16px; display: none; }
+  .quiz-result.show { display: block; animation: faqFadeIn .4s ease; }
+  .quiz-result .trophy { font-size: 48px; color: var(--green); margin-bottom: 16px; }
+  .quiz-result h3 { color: var(--blue); margin-bottom: 12px; }
+  .quiz-result p { color: var(--muted); margin-bottom: 20px; }
+  .quiz-result .retake { padding: 14px 32px; background: var(--blue); color: #fff; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: background .2s; }
+  .quiz-result .retake:hover { background: var(--navy); }
+
+  /* PROCESS (05 zigzag on why-gradient) */
+  .process-flow { background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 50%, var(--blue) 100%); position: relative; overflow: hidden; }
+  .process-flow::before { content: ''; position: absolute; width: 520px; height: 520px; background: radial-gradient(circle, rgba(87,166,53,.14), transparent 70%); top: -160px; left: -160px; border-radius: 50%; pointer-events: none; }
+  .process-flow::after { content: ''; position: absolute; width: 420px; height: 420px; background: radial-gradient(circle, rgba(87,166,53,.1), transparent 70%); bottom: -140px; right: -140px; border-radius: 50%; pointer-events: none; }
+  .process-flow .container { position: relative; z-index: 1; }
+  .process-flow .section-head h2 { color: #fff; }
+  .process-flow .section-head .green { color: var(--green); }
+  .process-flow .section-head p { color: rgba(255,255,255,.7); }
+  .process-flow .eyebrow { color: var(--green); }
+  .pf-timeline { position: relative; max-width: 1120px; margin: 0 auto; }
+  .pf-timeline::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 3px; background: linear-gradient(180deg, rgba(255,255,255,.5), var(--green)); transform: translateX(-50%); }
+  .pf-row { position: relative; width: 50%; padding: 26px 48px; }
+  .pf-row:nth-child(odd) { left: 0; }
+  .pf-row:nth-child(even) { left: 50%; }
+  .pf-pin { position: absolute; top: 36px; width: 68px; height: 68px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 18px; z-index: 2; transition: transform .25s ease; box-shadow: 0 8px 20px rgba(7,30,66,.35); }
+  .pf-row:nth-child(odd) .pf-pin { right: -34px; background: linear-gradient(135deg, var(--navy), #3f6fd1); color: #fff; }
+  .pf-row:nth-child(even) .pf-pin { left: -34px; background: linear-gradient(135deg, var(--green), #84c95c); color: #fff; }
+  .pf-row:hover .pf-pin { transform: scale(1.18) rotate(8deg); }
+  .pf-card { display: grid; grid-template-columns: 150px 1fr; gap: 24px; background: #fff; border: 1px solid var(--line); overflow: hidden; transition: transform .2s ease, box-shadow .2s ease; }
+  .pf-row:hover .pf-card { transform: translateY(-4px); box-shadow: 0 18px 36px rgba(7,30,66,.3); }
+  .pf-thumb { overflow: hidden; }
+  .pf-thumb img { width: 100%; height: 100%; min-height: 160px; object-fit: cover; object-position: center; }
+  .pf-body { padding: 24px 24px 24px 0; }
+  .pf-body small { font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--green); }
+  .pf-body h3 { font-size: 22px; color: var(--text); margin: 8px 0 10px; }
+  .pf-body p { font-size: 15px; color: var(--muted); line-height: 1.7; }
+  .pf-row:nth-child(even) .pf-card { grid-template-columns: 1fr 150px; }
+  .pf-row:nth-child(even) .pf-thumb { order: 2; }
+  .pf-row:nth-child(even) .pf-body { padding: 24px 0 24px 24px; }
+
+  /* ONE PLATFORM (04 horizontal snap carousel) */
+  .one-platform { min-height: 100vh; display: flex; align-items: center; background: #fff; }
+  .one-platform .container { width: 100%; }
+  .one-platform .track { display: flex; gap: 22px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 16px; margin: 0 -24px; padding-left: 24px; padding-right: 24px; }
+  .one-platform .track::-webkit-scrollbar { height: 8px; }
+  .one-platform .track::-webkit-scrollbar-thumb { background: #c8d6ec; border-radius: 99px; }
+  .one-platform .track::-webkit-scrollbar-track { background: #f0f4fc; border-radius: 99px; }
+  .one-platform .slide { flex: 0 0 340px; scroll-snap-align: start; background: var(--surface); border: 1px solid var(--line); border-radius: 0; padding: 34px 28px; position: relative; overflow: hidden; }
+  .one-platform .slide::before { content: ''; position: absolute; top: 0; right: 0; width: 110px; height: 110px; background: radial-gradient(circle, rgba(14,77,164,.08), transparent 70%); border-radius: 50%; }
+  .one-platform .slide:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(14,77,164,.12); }
+  .one-platform .slide .num { font-size: 44px; font-weight: 800; line-height: 1; background: linear-gradient(135deg, var(--blue), var(--green)); -webkit-background-clip: text; background-clip: text; color: transparent; opacity: .25; margin-bottom: 4px; }
+  .one-platform .slide .ic { width: 48px; height: 48px; border-radius: 0; display: flex; align-items: center; justify-content: center; font-size: 21px; color: #fff; background: linear-gradient(135deg, var(--blue), #3f6fd1); margin: 12px 0 18px; }
+  .one-platform .slide:nth-child(even) .ic { background: linear-gradient(135deg, var(--green), #84c95c); }
+  .one-platform .slide h4 { font-size: 17px; color: var(--text); margin-bottom: 6px; }
+  .one-platform .slide p { font-size: 13.8px; color: var(--muted); }
+  .one-platform .hint { text-align: center; color: var(--muted); font-size: 13px; margin-top: 20px; }
+  .one-platform .hint i { color: var(--green); }
+
+  @keyframes faqFadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* testimonials */
+  .testimonials { background: var(--surface); color: var(--text); }
+  .testimonials .section-head h2 { color: var(--blue); }
+  .t-card { background: #fff; border: 1px solid var(--line); height: 100%; transition: transform .15s ease, box-shadow .15s ease; }
+  .t-card:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(14,77,164,.12); }
+  .t-card .t-head { display: flex; align-items: center; gap: 12px; border-bottom: 1px solid var(--line); padding: 16px 20px; }
+  .t-card .avatar { width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--green)); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; }
+  .t-card .t-head strong { display: block; font-size: 14px; color: var(--text); }
+  .t-card .t-head span { font-size: 12px; color: var(--muted); }
+  .t-card .verified { margin-left: auto; color: var(--green); font-size: 12px; font-weight: 700; }
+  .t-card .t-body { padding: 20px; }
+  .t-card .stars { color: var(--green); font-size: .9rem; letter-spacing: 3px; margin-bottom: 10px; }
+  .t-card .t-body p { font-style: italic; color: var(--muted); font-size: 14px; line-height: 1.7; margin-bottom: 0; }
+
+  /* contact */
+  .info-panel { background: var(--blue); background-image: radial-gradient(60% 60% at 85% 10%, rgba(87,166,53,.18), transparent 60%); color: #fff; padding: 44px 36px; height: 100%; }
+  .info-panel h3 { font-size: 1.5rem; margin-bottom: 12px; }
+  .info-panel > p { color: rgba(255,255,255,.8); margin-bottom: 28px; }
+  .info-item { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
+  .info-item .ic { width: 46px; height: 46px; flex-shrink: 0; background: rgba(87,166,53,.18); border: 1px solid rgba(87,166,53,.35); color: var(--green); display: flex; align-items: center; justify-content: center; font-size: 20px; }
+  .info-item .ic i { font-size: 20px; line-height: 1; }
+  .info-item strong { display: block; font-size: 14px; }
+  .info-item span, .info-item a { color: rgba(255,255,255,.82); font-size: 14px; display: block; }
+  .info-item a:hover { color: var(--green); }
+  .form-panel { background: var(--surface); border: 1px solid var(--line); padding: 40px clamp(24px,4vw,44px); height: 100%; }
+  .form-panel .form-label { font-weight: 600; color: var(--text); }
+  .form-control, .form-select { border-radius: 0; border: 1px solid var(--line); padding: .65rem 1rem; }
+  .form-control:focus, .form-select:focus { border-color: var(--blue); box-shadow: 0 0 0 .2rem rgba(14,77,164,.15); }
+  .btn-submit { border-radius: 0; background: var(--green); color: #ffffff; font-weight: 700; padding: .7rem 1.6rem; border: 0; }
+  .btn-submit:hover { background: #4A8F2C; color: #ffffff; }
+  .btn-submit:disabled { opacity: .6; cursor: not-allowed; }
+  .form-status { font-size: 14px; padding: 10px 14px; margin-top: 6px; border-radius: 0; display: none; }
+  .captcha-row { display: flex; gap: 10px; align-items: center; }
+  .captcha-img { height: 44px; border: 1px solid #e3ebf8; border-radius: 0; display: block; }
+  .captcha-input { flex: 1; max-width: 170px; text-transform: uppercase; letter-spacing: 3px; font-weight: 700; }
+  .btn-captcha-refresh { background: var(--blue); color: #fff; border: 0; width: 44px; height: 44px; font-size: 20px; line-height: 1; cursor: pointer; border-radius: 0; flex: 0 0 auto; }
+  .btn-captcha-refresh:hover { background: var(--blue-light); }
+  .form-status.show { display: block; }
+  .form-status.success { background: rgba(87,166,53,.18); border: 1px solid var(--green); color: #0A2F63; }
+  .form-status.error { background: rgba(255,90,90,.12); border: 1px solid #ff5a5a; color: #a30000; }
+
+  /* pricing (unused - kept for reference)
+  .price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: stretch; }
+  .price { border: 1px solid var(--line); border-radius: 18px; padding: 34px; background: #fff; position: relative; display: flex; flex-direction: column; }
+  .price.popular { border: 2px solid var(--blue); box-shadow: 0 24px 50px rgba(14,77,164,.18); }
+  .price .flag { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--blue); color: #fff; padding: 5px 16px; border-radius: 999px; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+  .price h3 { color: var(--blue); font-size: 20px; }
+  .price .amount { font-size: 2.6rem; color: var(--text); margin: 14px 0 4px; font-weight: 800; }
+  .price .amount small { font-size: 15px; color: var(--muted); font-weight: 400; }
+  .price p.desc { color: var(--muted); font-size: 14px; margin-bottom: 22px; }
+  .price ul { list-style: none; margin-bottom: 28px; }
+  .price ul li { padding: 8px 0; color: var(--text); font-size: 15px; border-top: 1px solid var(--line); }
+  .price ul li:first-of-type { border-top: 0; }
+  .price ul li .yes { color: var(--green); }
+  .price .btn { justify-content: center; width: 100%; margin-top: auto; }
+  .btn-outline { border: 2px solid var(--blue); color: var(--blue); }
+  .btn-outline:hover { background: var(--surface); }
+  */
+
+  /* final CTA */
+  .cta-band { background: linear-gradient(135deg, var(--blue), var(--navy)); color: #fff; text-align: center; }
+  .cta-band h2 { font-size: clamp(1.9rem, 4vw, 2.8rem); letter-spacing: -0.02em; margin-bottom: 16px; }
+  .cta-band h2 .green { color: var(--green); }
+  .cta-band p { color: rgba(255,255,255,.8); max-width: 620px; margin: 0 auto 20px; }
+  .cta-band .cta-sub { color: #fff; font-weight: 700; font-size: 1.1rem; }
+  .cta-band .cta-phone { margin-top: 8px; }
+  .cta-band .cta-phone a { color: #fff; font-weight: 700; font-size: 1.1rem; text-decoration: underline; text-decoration-color: var(--green); text-underline-offset: 6px; }
+  .cta-band .btn-green { box-shadow: 0 12px 34px rgba(0,0,0,.25); }
+
+  /* footer */
+  footer { background: var(--navy-deep); color: rgba(255,255,255,.7); padding: 60px 0 30px; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 44px; }
+  .footer-brand .brand { font-size: 24px; margin-bottom: 28px; display: inline-block; }
+  .footer-brand .brand img { filter: brightness(1.25); height: 80px; width: auto; display: block; object-fit: contain; }
+  .footer-brand p { font-size: 14px; max-width: 260px; }
+  .footer-col h4 { color: #fff; font-size: 15px; margin-bottom: 16px; }
+  .footer-col a { display: block; color: rgba(255,255,255,.7); font-size: 14px; padding: 6px 0; transition: color .15s ease; }
+  .footer-col a:hover { color: var(--green); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,.1); padding-top: 24px; font-size: 13px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  .social-links { display: flex; gap: 12px; margin-top: 18px; }
+  .social-links a { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,.1); color: #fff; border-radius: 50%; font-size: 18px; text-decoration: none; transition: background .15s ease, color .15s ease, transform .15s ease; }
+  .social-links a:hover { background: var(--green); color: #ffffff; transform: translateY(-2px); }
+
+  /* ---------- TRUST / PARTNERSHIP (glassmorphism dark) ---------- */
+  .trust { background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%); color: #fff; position: relative; overflow: hidden; }
+  .trust::before { content: ''; position: absolute; width: 500px; height: 500px; background: radial-gradient(circle, rgba(87,166,53,.1), transparent 70%); top: -100px; left: -100px; border-radius: 50%; pointer-events: none; }
+  .trust::after { content: ''; position: absolute; width: 400px; height: 400px; background: radial-gradient(circle, rgba(14,77,164,.08), transparent 70%); bottom: -100px; right: -100px; border-radius: 50%; pointer-events: none; }
+  .trust .container { position: relative; z-index: 1; }
+  .trust .section-head h2 { color: #fff; }
+  .trust .section-head .green { color: var(--green); }
+  .trust .section-head p { color: rgba(255,255,255,.55); }
+  .trust .eyebrow { color: var(--green); }
+  .trust-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 48px; }
+  .trust-card { background: rgba(255,255,255,.04); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,.07); border-radius: 0; padding: 40px 32px; position: relative; overflow: hidden; transition: all .4s cubic-bezier(.22,1,.36,1); }
+  .trust-card:hover { background: rgba(255,255,255,.08); border-color: rgba(87,166,53,.25); transform: translateY(-8px); box-shadow: 0 30px 80px rgba(0,0,0,.3); }
+  .trust-card .glow { position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(87,166,53,.12), transparent 70%); border-radius: 50%; transition: all .4s ease; pointer-events: none; }
+  .trust-card:hover .glow { transform: scale(1.4); }
+  .trust-card .trust-card-img { display: block; width: calc(100% + 64px); height: 170px; object-fit: cover; margin: -40px -32px 24px; }
+  .trust-card.has-img { min-height: 380px; padding: 32px; display: flex; flex-direction: column; justify-content: flex-end; border: 0; }
+  .trust-card.has-img::before { content: ''; position: absolute; inset: 0; border: 1px solid rgba(255,255,255,.1); pointer-events: none; }
+  .trust-card.has-img .trust-card-img { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; }
+  .trust-card.has-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6,13,26,.05) 0%, rgba(6,13,26,.15) 40%, rgba(6,13,26,.9) 100%); pointer-events: none; }
+  .trust-card.has-img .icon-wrap, .trust-card.has-img h3, .trust-card.has-img p, .trust-card.has-img .tag { position: relative; z-index: 1; }
+.trust-card .icon-wrap { width: 60px; height: 60px; background: linear-gradient(135deg, rgba(87,166,53,.18), rgba(87,166,53,.06)); border: 1px solid rgba(87,166,53,.25); border-radius: 0; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 24px; color: var(--green); }
+  .trust-card h3 { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 10px; }
+  .trust-card p { color: rgba(255,255,255,.55); font-size: 14px; line-height: 1.75; margin-bottom: 0; }
+  .trust-card .tag { display: inline-block; margin-top: 20px; padding: 6px 14px; background: rgba(87,166,53,.1); border: 1px solid rgba(87,166,53,.18); border-radius: 0; color: var(--green); font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+  .trust-banner { background: linear-gradient(135deg, rgba(87,166,53,.1), rgba(14,77,164,.05)); border: 1px solid rgba(87,166,53,.15); border-radius: 0; padding: 36px 40px; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+  .trust-banner-left { display: flex; align-items: center; gap: 20px; }
+  .trust-banner .logo-circle { width: 56px; height: 56px; padding: 7px; background: #fff; border: 1px solid rgba(255,255,255,.8); border-radius: 50%; display: block; object-fit: contain; flex-shrink: 0; }
+  .trust-banner-text h4 { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+  .trust-banner-text p { color: rgba(255,255,255,.55); font-size: 13px; margin-bottom: 0; }
+  .trust-banner .btn-green { flex-shrink: 0; border-radius: 0; }
+
+  /* ======================================================
+     RESPONSIVE (tablet + mobile ONLY â€” desktop untouched)
+     Strategy: 1024 tablet Â· 768 tablet-portrait Â· 640 mobile Â· 480 small Â· 360 tiny
+     ====================================================== */
+
+  /* ---------- TABLET (<=1024px) ---------- */
+  @media (max-width: 1024px) {
+    .hero { padding-top: 60px; min-height: calc(100vh - 70px); }
+    .nav-inner { height: 70px; }
+    .brand-logo { height: 54px; max-width: 190px; }
+    .footer-brand .brand img { height: 64px; }
+    /* collapse navbar into hamburger on tablets (desktop >1024 keeps full nav) */
+    .nav-links {
+      display: none;
+      position: absolute; top: 70px; left: 0; right: 0;
+      flex-direction: column; gap: 0;
+      background: #fff; box-shadow: 0 10px 30px rgba(0,0,0,.12); padding: 12px 24px;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links a { padding: 12px 0; border-bottom: 1px solid var(--line); }
+    .menu-btn { display: block; }
+    .nav-call { display: inline-flex; }
+
+    .calc-grid, .svc-grid, .steps, .steps-4, .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .trust-grid { grid-template-columns: repeat(3, 1fr); }
+    .why-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .why-banner { grid-template-columns: 1fr 1fr; }
+    .timeline { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+    .timeline::before { display: none; }
+    .about { min-height: auto; }
+    .calc-featured { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .footer-brand { grid-column: 1 / -1; }
+  }
+
+  /* ---------- TABLET PORTRAIT (<=768px) ---------- */
+  @media (max-width: 768px) {
+    body { padding-top: 0; }
+    .container { padding: 0 20px; }
+    .nav-inner { height: 64px; padding: 0 20px; }
+    .brand-logo { height: 48px; max-width: 170px; }
+    .footer-brand .brand img { height: 56px; }
+    .section.block { padding: 76px 0; }
+    .about { padding: 64px 0; }
+    /* Hero matches hero-image proportions (1376x768) but always grows to fit
+       its content. Nav joins normal flow so it never covers the hero. */
+    header { position: relative; }
+    .hero {
+      padding: 40px 22px 36px;
+      min-height: calc(100vw / 1.792);
+      height: auto;
+    }
+    .hero .inner { max-width: 100%; }
+    .info-panel, .form-panel { height: auto; }
+    /* process zigzag collapses to one column with a left rail */
+    .pf-timeline::before { left: 28px; }
+    .pf-row { width: 100%; left: 0 !important; padding: 14px 14px 14px 76px; }
+    .pf-row:nth-child(odd) .pf-pin, .pf-row:nth-child(even) .pf-pin { left: 0; right: auto; }
+    .pf-card, .pf-row:nth-child(even) .pf-card { grid-template-columns: 1fr; }
+    .pf-row:nth-child(even) .pf-thumb { order: 0; }
+    .pf-row:nth-child(even) .pf-body { padding: 16px; }
+    .pf-body { padding: 16px; }
+  }
+
+  /* ---------- MOBILE (<=640px) ---------- */
+  @media (max-width: 640px) {
+    .nav-inner { height: 60px; padding: 0 20px; }
+    .brand-logo { height: 44px; max-width: 160px; }
+    .footer-brand .brand img { height: 48px; }
+    .nav-links { top: 60px !important; }
+    .calc-grid, .svc-grid, .steps { grid-template-columns: 1fr; }
+    .trust-grid { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr; }
+    .why-banner { grid-template-columns: 1fr; }
+    .timeline { grid-template-columns: 1fr; gap: 28px; }
+    .one-platform .track { margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0; }
+    .one-platform .slide { flex: 0 0 85%; }
+    .stats-grid { grid-template-columns: 1fr 1fr; }   /* 4 stats stay 2-up on phones */
+    .steps-4 { grid-template-columns: 1fr 1fr; }       /* 4 steps stay 2-up on phones */
+    .trust-banner { flex-direction: column; text-align: center; gap: 20px; }
+    .trust-banner-left { flex-direction: column; text-align: center; gap: 14px; }
+    .trust-banner .logo-circle { margin: 0 auto; }
+    .trust-card { text-align: center; }
+    .trust-card .icon-wrap { margin-left: auto; margin-right: auto; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .hero { padding: 34px 20px 30px; text-align: center; min-height: calc(100vw / 1.792); height: auto; }
+    .hero p { margin: 16px 0 24px; }
+    .hero .badge { margin-bottom: 16px; }
+    .hero-trust { margin-top: 24px; gap: 18px; }
+    .cta { margin-bottom: 0; }
+    .hero .inner { max-width: 100%; }
+    .cta { gap: 12px; justify-content: center; }
+    /* center ALL content/text on mobile (tablet + desktop untouched) */
+    body { text-align: center; }
+    .hero, .hero .inner, .info-panel, .form-panel, .footer-col, .footer-brand,
+    .testimonials .t-card, .testimonials .t-body, .calc-featured, .calc-featured .cf-left,
+    .calc-featured .cf-right, .svc-card, .stat,
+    .logos, .logos .logo-row, .about, .t-step, .about-note, .trust-card, .trust-banner, .trust-banner-left,
+    .trust-banner-text, .mode-toggle, .faq-list, .faq-card, .faq-btn, .faq-btn h3, .faq-panel, .quiz-q,
+    .quiz-options, .quiz-opt, .quiz-nav, .quiz-progress, .quiz-result,
+    .process-flow, .pf-timeline, .pf-row, .pf-card, .pf-body, .pf-body h3, .pf-body p { text-align: center; }
+    .hero-trust, .info-item, .captcha-row { justify-content: center; }
+    .nav-links a { text-align: center; }
+    .form-control, .form-select, .calc-quick input, .calc-quick .result { text-align: center; }
+    .footer-bottom { flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 8px; }
+    .badge { font-size: 12px; padding: 7px 13px; }
+    .section.block { padding: 60px 0; }
+  }
+
+  /* ---------- SMALL MOBILE (<=480px) ---------- */
+  @media (max-width: 480px) {
+    .container { padding: 0 16px; }
+    .nav-inner { padding: 0 16px; height: 56px; }
+    .brand-logo { height: 40px; max-width: 150px; }
+    .footer-brand .brand img { height: 42px; }
+    .nav-links { top: 56px !important; }
+    .nav-call { width: 38px; height: 38px; font-size: 16px; }
+    .menu-btn { font-size: 22px; }
+    .section.block { padding: 52px 0; }
+    .hero { padding: 28px 16px 26px; }
+    .hero h1 { line-height: 1.14; font-size: clamp(1.85rem, 7.5vw, 2.5rem); }
+    .section-head h2 { font-size: clamp(1.5rem, 6vw, 2rem); line-height: 1.2; }
+    .cta-band h2 { font-size: clamp(1.6rem, 6vw, 2.2rem); line-height: 1.2; }
+    .stat strong { font-size: clamp(1.5rem, 7vw, 2.1rem); }
+    .calc-featured h3 { font-size: clamp(1.3rem, 5vw, 1.6rem); }
+    .nav-links a { font-size: 16px; }
+    .hero p { font-size: 1rem; }
+    .section-head p { font-size: 1rem; }
+    .about { padding: 52px 0; }
+    .footer-bottom { flex-direction: column; align-items: center; text-align: center; }
+    .calc-quick input { padding: 11px 12px; font-size: 14px; }
+    .calc-quick label { font-size: 11px; }
+    .calc-featured .open { width: 100%; text-align: center; }
+    .info-panel { padding: 32px 24px; }
+    .form-panel { padding: 32px 20px; }
+  }
+
+  /* ---------- TINY MOBILE (<=360px) ---------- */
+  @media (max-width: 360px) {
+    .nav-inner { height: 52px; padding: 0 12px; }
+    .brand-logo { height: 36px; max-width: 140px; }
+    .footer-brand .brand img { height: 36px; }
+    .nav-links { top: 52px !important; }
+    .container { padding: 0 12px; }
+    .hero h1 { font-size: clamp(1.9rem, 8vw, 2.3rem); }
+    .cta .btn { width: 100%; justify-content: center; }
+    .section-head h2 { font-size: clamp(1.55rem, 7vw, 2rem); }
+    .badge { font-size: 11px; padding: 6px 12px; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ======= NAV ======= -->
+  <header>
+    <div class="nav-inner">
+<a href="#home" class="brand"><img class="brand-logo" src="images/logo.png" alt="MJR Fin Wealth Finance logo" width="220" height="60"></a>
+      <nav class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#trust">Trust &amp; Partnership</a>
+        <a href="#about">About Us</a>
+        <a href="#services">Services</a>
+        <a href="#calculators">Calculator</a>
+        <a href="blogs/index.html">Blogs</a>
+        <a href="#contact">Contact Us</a>
+        <a href="tel:+918754500310">+91 87545 00310</a>
+        <a href="#contact" class="nav-cta">Invest Now</a>
+      </nav>
+      <a href="tel:+918754500310" class="nav-call" aria-label="Call MJR Fin Wealth Finance"><i class="bi bi-telephone-fill"></i></a>
+      <button class="menu-btn" aria-label="Menu">&#9776;</button>
+    </div>
+  </header>
+
+  <!-- ======= HERO (09 Dark Blue) ======= -->
+  <section class="hero" id="home">
+    <div class="inner">
+      <span class="badge anim"><span class="dot"></span> Plan Today. Prosper Tomorrow.</span>
+      <h1 class="anim anim-d1">Your Trusted Partner for <span class="green">Smarter Financial Decisions</span></h1>
+      <p class="anim anim-d2">At MJR Fin Wealth, we help individuals, families, and businesses make informed financial decisions and build a stronger financial future. Through our association with FundsIndia Partner, we provide access to diverse investment opportunities and financial solutions&mdash;all with personalized guidance.</p>
+      <p class="hero-tag anim anim-d2">Your Goals. Our Planning. A Better Financial Future.</p>
+      <div class="cta anim anim-d3">
+        <a href="#services" class="btn btn-green">Explore Investment Solutions</a>
+        <a href="#contact" class="btn btn-ghost">Talk to Our Advisor &#8594;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= TRUST / PARTNERSHIP (glassmorphism dark) ======= -->
+  <section class="block trust" id="trust">
+    <div class="container">
+      <div class="section-head anim">
+        <div class="eyebrow">In Association with FundsIndia Partner</div>
+        <h2>A Complete Platform for <span class="green">Your Financial Journey</span></h2>
+        <p>MJR Fin Wealth, in association with FundsIndia Partner, brings together diverse financial opportunities through one convenient platform.</p>
+      </div>
+
+      <div class="trust-grid">
+        <div class="trust-card has-img anim">
+          <div class="glow"></div>
+          <img loading="lazy" class="trust-card-img" src="images/trusted-guidance-card.jpg" alt="Trusted Guidance">
+          <!-- <div class="icon-wrap"><i class="bi bi-shield-check"></i></div> -->
+          <h3>Trusted Guidance</h3>
+          <p style="color: white;">Expert financial advisors committed to guiding you every step of the way with transparent and reliable advice.</p>
+          <span class="tag">Advisory</span>
+        </div>
+        <div class="trust-card has-img anim anim-d1">
+          <div class="glow"></div>
+          <img loading="lazy" class="trust-card-img" src="images/diverse-opportunities-card.jpg" alt="Diverse Opportunities">
+          <!-- <div class="icon-wrap"><i class="bi bi-diagram-3"></i></div> -->
+          <h3>Diverse Opportunities</h3>
+          <p style="color: white;">Access a wide spectrum of investment options and financial instruments tailored for every risk appetite.</p>
+          <span class="tag">Investment</span>
+        </div>
+        <div class="trust-card has-img anim anim-d2">
+          <div class="glow"></div>
+          <img loading="lazy" class="trust-card-img" src="images/personalized-support-card.jpg" alt="Personalized Support">
+          <!-- <div class="icon-wrap"><i class="bi bi-people"></i></div> -->
+          <h3>Personalized Support</h3>
+          <p style="color: white;">Dedicated relationship managers ensuring your unique financial needs are met with customized solutions.</p>
+          <span class="tag">Support</span>
+        </div>
+      </div>
+
+      <div class="trust-banner anim anim-d3">
+        <div class="trust-banner-left">
+          <img class="logo-circle" src="images/idP0Bgl3Ia_logos.jpeg" alt="FundsIndia Partner logo" width="56" height="56">
+          <div class="trust-banner-text">
+            <h4>Powered by FundsIndia Partner</h4>
+            <p>Helping you make decisions based on your individual goals and requirements.</p>
+          </div>
+        </div>
+        <a href="#contact" class="btn btn-green">Get Started &#8594;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= ABOUT (02 centered timeline) ======= -->
+  <section class="block about" id="about">
+    <div class="container">
+
+      <div class="section-head anim">
+        <div class="eyebrow">About MJR Fin Wealth</div>
+        <h2>We Don't Just Recommend.<br>We <span class="green">Help You Plan.</span></h2>
+        <p>Financial planning is not the same for everyone. Every individual has different dreams, responsibilities, income levels, and financial goals. At MJR Fin Wealth, we take the time to understand your requirements before helping you explore suitable financial solutions.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="t-step anim">
+          <div class="t-num">01</div>
+          <h3>Understand Your Goals</h3>
+          <p>We listen to your financial needs, priorities, and future aspirations.</p>
+        </div>
+        <div class="t-step anim anim-d1">
+          <div class="t-num">02</div>
+          <h3>Plan Strategically</h3>
+          <p>We help create a structured approach based on your individual requirements.</p>
+        </div>
+        <div class="t-step anim anim-d2">
+          <div class="t-num">03</div>
+          <h3>Explore Suitable Solutions</h3>
+          <p>Access a wide range of investment and financial opportunities through our platform.</p>
+        </div>
+        <div class="t-step anim anim-d3">
+          <div class="t-num">04</div>
+          <h3>Stay Connected</h3>
+          <p>Our team provides ongoing assistance throughout your financial journey.</p>
+        </div>
+      </div>
+
+      <div class="about-note anim">
+        <p>Our focus is on building <strong>long-term relationships</strong> through transparent guidance, continuous support, and a well-structured planning approach.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======= SERVICES ======= -->
+  <section class="block services" id="services">
+    <div class="container">
+      <div class="section-head anim">
+        <div class="eyebrow">OUR FINANCIAL SOLUTIONS </div>
+        <h2>One Platform. <span class="green">Multiple Opportunities.</span></h2>
+        <p>Explore a wide range of financial solutions designed to support different financial goals and requirements.</p>
+      </div>
+      <div class="svc-grid">
+          <div class="svc-card has-img anim">
+            <img loading="lazy" class="svc-card-img" src="images/mutual-funds-card.jpg" alt="Mutual Funds">
+            <div class="svc-body">
+              <h3>Mutual Funds</h3>
+              <p>Explore a wide range of mutual fund opportunities from leading fund houses to help you work towards your financial goals.</p>
+              <a href="#" class="link">Book For Free Consultation</a>
+            </div>
+          </div>
+          <div class="svc-card has-img anim">
+            <img loading="lazy" class="svc-card-img" src="images/pms-card.jpg" alt="PMS">
+            <div class="svc-body">
+              <h3>PMS</h3>
+              <p>Personalized Portfolio Management Services designed for investors seeking professionally managed investment strategies.</p>
+              <a href="#" class="link">Book For Free Consultation</a>
+            </div>
+          </div>
+          <div class="svc-card has-img anim">
+            <img loading="lazy" class="svc-card-img" src="images/aifs-card.jpg" alt="AIFs">
+            <div class="svc-body">
+              <h3>AIFs</h3>
+              <p>Explore Alternative Investment Funds and specialized investment opportunities across different categories.</p>
+              <a href="#" class="link">Book For Free Consultation</a>
+            </div>
+          </div>
+          <div class="svc-card has-img anim">
+            <img loading="lazy" class="svc-card-img" src="images/sifs-card.jpg" alt="SIFs">
+            <div class="svc-body">
+              <h3>SIFs</h3>
+              <p>Access Specialized Investment Funds designed around different strategies and investment themes.</p>
+              <a href="#" class="link">Book For Free Consultation</a>
+            </div>
+          </div>
+          <div class="svc-card has-img anim">
+            <img loading="lazy" class="svc-card-img" src="images/bonds-ncds-card.jpg" alt="Bonds and NCDs">
+            <div class="svc-body">
+              <h3>Bonds &amp; NCDs</h3>
+              <p>Explore fixed-income opportunities, including selected corporate bonds and NCDs.</p>
+              <a href="#" class="link">Book For Free Consultation</a>
+            </div>
+          </div>
+          <div class="svc-card has-img anim">
+            <img loading="lazy" class="svc-card-img" src="images/sips-card.jpg" alt="SIPs">
+            <div class="svc-body">
+              <h3>SIPs</h3>
+              <p>Build financial discipline through systematic investing and work towards your long-term goals.</p>
+              <a href="#" class="link">Book For Free Consultation</a>
+            </div>
+          </div>
+          <div class="svc-card has-img anim">
+            <img loading="lazy" class="svc-card-img" src="images/fixed-income-card.jpg" alt="Fixed Income Solutions">
+            <div class="svc-body">
+              <h3>Fixed Income Solutions</h3>
+              <p>Explore debt funds, liquid funds, and other fixed-income investment opportunities.</p>
+              <a href="#" class="link">Book For Free Consultation</a>
+            </div>
+          </div>
+          <div class="svc-card has-img anim">
+            <img loading="lazy" class="svc-card-img" src="images/loans-card.jpg" alt="Loans">
+            <div class="svc-body">
+              <h3>Loans</h3>
+              <p>Assistance in exploring financial solutions for various requirements, including home loans, business loans, personal loans, loans against property, and more.</p>
+              <a href="#" class="link">Book For Free Consultation</a>
+            </div>
+          </div>
+          <div class="svc-card has-img anim">
+            <img loading="lazy" class="svc-card-img" src="images/gift-city-card.jpg" alt="GIFT City Opportunities">
+            <div class="svc-body">
+              <h3>GIFT City Opportunities</h3>
+              <p>Explore selected global investment opportunities through India's growing international financial ecosystem.</p>
+              <a href="#" class="link">Book For Free Consultation</a>
+            </div>
+          </div>
+        </div>
+    </div>
+  </section>
+
+  <!-- ======= CALCULATORS ======= -->
+  <section class="block calcs" id="calculators">
+    <div class="container">
+      <div class="section-head anim">
+        <div class="eyebrow">Free Financial Calculators</div>
+        <h2>Calculate Your <span class="green">Financial Future</span></h2>
+        <p>Plan smarter with our suite of easy-to-use financial calculators.</p>
+      </div>
+      <div class="calc-featured anim anim-d1" id="calc-featured">
+        <div class="cf-left">
+          <div class="icon" id="cf-icon"><i class="bi bi-graph-up-arrow"></i></div>
+          <h3 id="cf-title">Start with SIP Calculator</h3>
+          <p id="cf-desc">See how your monthly investments can grow over time with our most popular calculator.</p>
+          <ul class="cf-details" id="cf-details">
+            <li><i class="bi bi-check2"></i> Invest a fixed amount monthly to build wealth.</li>
+            <li><i class="bi bi-check2"></i> Returns compound over your chosen time period.</li>
+            <li><i class="bi bi-check2"></i> Get an instant maturity value estimate.</li>
+          </ul>
+        </div>
+        <div class="cf-right calc-quick" id="cf-form">
+          <label for="sip-amount">Monthly investment</label>
+          <input type="number" id="sip-amount" placeholder="Monthly investment" value="5000">
+          <label for="sip-rate">Expected return rate (p.a)</label>
+          <input type="number" id="sip-rate" placeholder="Expected return rate (p.a)" value="12">
+          <label for="sip-years">Time period (Year)</label>
+          <input type="number" id="sip-years" placeholder="Time period (Year)" value="10">
+          <div class="result" id="cf-result"></div>
+          <button type="button" class="calc-btn">Calculate</button>
+        </div>
+      </div>
+      <div class="calc-grid anim anim-d2">
+        <a href="calculators.html#sip" class="calc-link" data-calc="sip"><div class="dot" style="background:#57A635;color:#ffffff"><i class="bi bi-graph-up-arrow"></i></div><span>SIP Calculator</span></a>
+        <a href="calculators.html#lumpsum" class="calc-link" data-calc="lumpsum"><div class="dot" style="background:#0E4DA4;color:#fff"><i class="bi bi-cash-stack"></i></div><span>Lumpsum Calculator</span></a>
+        <a href="calculators.html#swp" class="calc-link" data-calc="swp"><div class="dot" style="background:#57A635;color:#ffffff"><i class="bi bi-arrow-down-circle"></i></div><span>SWP Calculator</span></a>
+        <a href="calculators.html#goal" class="calc-link" data-calc="goal"><div class="dot" style="background:#0E4DA4;color:#fff"><i class="bi bi-bullseye"></i></div><span>Goal Based Investment</span></a>
+        <a href="calculators.html#retirement" class="calc-link" data-calc="retirement"><div class="dot" style="background:#57A635;color:#ffffff"><i class="bi bi-bank"></i></div><span>Retirement Planning</span></a>
+        <a href="calculators.html#inflation" class="calc-link" data-calc="inflation"><div class="dot" style="background:#0E4DA4;color:#fff"><i class="bi bi-receipt"></i></div><span>Inflation Calculator</span></a>
+        <a href="calculators.html#tax" class="calc-link" data-calc="tax"><div class="dot" style="background:#57A635;color:#ffffff"><i class="bi bi-graph-up-arrow"></i></div><span>Income Tax Calculator</span></a>
+        <a href="calculators.html#fd" class="calc-link" data-calc="fd"><div class="dot" style="background:#0E4DA4;color:#fff"><i class="bi bi-piggy-bank"></i></div><span>FD Calculator</span></a>
+        <a href="calculators.html#rd" class="calc-link" data-calc="rd"><div class="dot" style="background:#57A635;color:#ffffff"><i class="bi bi-currency-rupee"></i></div><span>RD Calculator</span></a>
+        <a href="calculators.html#emi" class="calc-link" data-calc="emi"><div class="dot" style="background:#0E4DA4;color:#fff"><i class="bi bi-house-door"></i></div><span>EMI Calculator</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= WHY CHOOSE ======= -->
+  <section class="block why">
+    <div class="container">
+      <div class="section-head anim">
+        <div class="eyebrow">Why Choose Us?</div>
+        <h2>Why Choose <span class="green">MJR Fin Wealth?</span></h2>
+        <p>Your financial journey deserves a partner who listens, plans, supports, and stays with you all the way.</p>
+      </div>
+      <div class="why-grid">
+        <div class="w-card anim">
+          <div class="glow"></div>
+          <div class="ic"><i class="bi bi-person-heart"></i></div>
+          <h3>Dedicated Support</h3>
+          <p>We believe financial planning should never feel confusing. Our dedicated team is available to assist you with your queries and requirements.</p>
+        </div>
+        <div class="w-card anim">
+          <div class="glow"></div>
+          <div class="ic"><i class="bi bi-clock-history"></i></div>
+          <h3>All-Time Assistance</h3>
+          <p>Have questions about your investments or financial planning? We aim to provide timely support whenever you need assistance.</p>
+        </div>
+        <div class="w-card anim">
+          <div class="glow"></div>
+          <div class="ic"><i class="bi bi-person-check"></i></div>
+          <h3>Personalized Guidance</h3>
+          <p>Every financial journey is different. We take time to understand your goals and help you explore suitable options.</p>
+        </div>
+        <div class="w-card anim">
+          <div class="glow"></div>
+          <div class="ic"><i class="bi bi-list-check"></i></div>
+          <h3>Structured Planning Method</h3>
+          <p>We follow a systematic approachâ€”understanding your needs, identifying your goals, planning strategically, and reviewing your financial journey.</p>
+        </div>
+        <div class="w-card anim">
+          <div class="glow"></div>
+          <div class="ic"><i class="bi bi-eye"></i></div>
+          <h3>Transparent Approach</h3>
+          <p>We believe in clear communication and helping our clients understand their financial options.</p>
+        </div>
+        <div class="w-card anim">
+          <div class="glow"></div>
+          <div class="ic"><i class="bi bi-graph-up-arrow"></i></div>
+          <h3>Diverse Financial Opportunities</h3>
+          <p>Access multiple investment categories and financial solutions through a single platform.</p>
+        </div>
+        <div class="w-card anim">
+          <div class="glow"></div>
+          <div class="ic"><i class="bi bi-arrow-repeat"></i></div>
+          <h3>Regular Review &amp; Support</h3>
+          <p>Financial goals can change over time. We stay connected and help you review your journey whenever required.</p>
+        </div>
+        <div class="w-card anim">
+          <div class="glow"></div>
+          <div class="ic"><i class="bi bi-bullseye"></i></div>
+          <h3>Goal-Oriented Approach</h3>
+          <p>Whether your goal is wealth creation, children's future, retirement, or another financial milestone, we help you plan with purpose.</p>
+        </div>
+      </div>
+      <div class="why-banner anim">
+        <div class="why-tile">
+          <img src="images/trusted-guidance-banner.jpg" alt="Trusted Guidance">
+          <div class="label">Trusted Guidance</div>
+        </div>
+        <div class="why-tile">
+          <img src="images/long-term-relationships-banner.jpg" alt="Long-Term Relationships">
+          <div class="label">Long-Term Relationships</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= FAQ ======= -->
+  <section class="block faq">
+    <div class="container">
+      <div class="section-head anim">
+        <div class="eyebrow">FAQ / Quiz</div>
+        <h2>Test Your Knowledge <span class="green">or Browse FAQs</span></h2>
+      </div>
+
+      <div class="faq-body anim anim-d1">
+        <div class="mode-toggle" role="tablist" aria-label="View mode">
+          <button class="mode-btn active" id="modeFaqBtn" role="tab" aria-selected="true" data-mode="faq"><i class="bi bi-question-circle"></i> FAQ</button>
+          <button class="mode-btn" id="modeQuizBtn" role="tab" aria-selected="false" data-mode="quiz"><i class="bi bi-clipboard-check"></i> Quiz</button>
+        </div>
+
+        <!-- FAQ MODE -->
+        <div class="faq-mode" id="faqMode" role="tabpanel">
+          <div class="faq-list">
+            <article class="faq-card">
+              <button class="faq-btn" aria-expanded="false" aria-controls="fq1">
+                <i class="bi bi-box-seam icon"></i>
+                <h3>What financial products does MJR Fin Wealth help me invest in?</h3>
+                <i class="bi bi-chevron-down arrow"></i>
+              </button>
+              <div id="fq1" class="faq-panel" role="region">
+                <p>We offer access to a single platform covering Mutual Funds, PMS, AIFs, SIFs, Bonds &amp; NCDs, SIPs, Fixed Income Solutions, Loans, and GIFT City opportunities. Your mix is selected based on your financial goals, time horizon, and risk appetite — not a one-size-fits-all product.</p>
+              </div>
+            </article>
+            <article class="faq-card">
+              <button class="faq-btn" aria-expanded="false" aria-controls="fq2">
+                <i class="bi bi-briefcase icon"></i>
+                <h3>What is the difference between a Mutual Fund and a PMS?</h3>
+                <i class="bi bi-chevron-down arrow"></i>
+              </button>
+              <div id="fq2" class="faq-panel" role="region">
+                <p>A Mutual Fund pools money from many investors into a professionally managed scheme (regulated by SEBI), and you can start with amounts as low as a few hundred rupees. A Portfolio Management Service (PMS) is a personalized portfolio — usually for a minimum of ₹50 lakh — where a dedicated portfolio manager invests directly in selected stocks and bonds based on your mandate and risk profile. Both are SEBI-regulated, but PMS offers customization in exchange for higher minimums.</p>
+              </div>
+            </article>
+            <article class="faq-card">
+              <button class="faq-btn" aria-expanded="false" aria-controls="fq3">
+                <i class="bi bi-currency-rupee icon"></i>
+                <h3>Can I really start investing from ₹500 a month?</h3>
+                <i class="bi bi-chevron-down arrow"></i>
+              </button>
+              <div id="fq3" class="faq-panel" role="region">
+                <p>Yes. Through a Systematic Investment Plan (SIP) you can begin with as little as ₹500 per month. It is automated, uses rupee-cost averaging to smooth market ups and downs, and you can increase (step-up) the amount over time as your income grows — small, consistent contributions build a meaningful corpus through compounding.</p>
+              </div>
+            </article>
+            <article class="faq-card">
+              <button class="faq-btn" aria-expanded="false" aria-controls="fq4">
+                <i class="bi bi-globe-americas icon"></i>
+                <h3>What is GIFT City, and why should I consider it?</h3>
+                <i class="bi bi-chevron-down arrow"></i>
+              </button>
+              <div id="fq4" class="faq-panel" role="region">
+                <p>GIFT City in Gandhinagar, Gujarat is India's first International Financial Services Centre (IFSC). It enables foreign-currency savings and investments, access to global funds and capital markets, and several tax incentives designed for international finance. Eligible investors can diversify beyond domestic markets here — we help you evaluate whether GIFT City opportunities fit your portfolio.</p>
+              </div>
+            </article>
+            <article class="faq-card">
+              <button class="faq-btn" aria-expanded="false" aria-controls="fq5">
+                <i class="bi bi-receipt icon"></i>
+                <h3>How is tax calculated on mutual fund investments?</h3>
+                <i class="bi bi-chevron-down arrow"></i>
+              </button>
+              <div id="fq5" class="faq-panel" role="region">
+                <p>For equity-oriented funds, short-term capital gains (holding up to 1 year) are taxed at 20%, while long-term gains above ₹1.25 lakh are taxed at 12.5% as per Budget 2024 rules. Debt funds are taxed as per your income-tax slab. Holding periods, TDS, and frequent rule changes matter — always verify current tax provisions with a chartered accountant before filing.</p>
+              </div>
+            </article>
+            <article class="faq-card">
+              <button class="faq-btn" aria-expanded="false" aria-controls="fq6">
+                <i class="bi bi-arrow-down-circle icon"></i>
+                <h3>What is an SWP, and who should use one?</h3>
+                <i class="bi bi-chevron-down arrow"></i>
+              </button>
+              <div id="fq6" class="faq-panel" role="region">
+                <p>A Systematic Withdrawal Plan (SWP) lets you redeem a fixed amount from your fund at regular intervals — acting like a monthly pension. It suits retirees or anyone wanting regular income while keeping capital invested. An SWP can be paired with an ongoing SIP, and the withdrawals are taxed only on the redeemed growth portion.</p>
+              </div>
+            </article>
+            <article class="faq-card">
+              <button class="faq-btn" aria-expanded="false" aria-controls="fq7">
+                <i class="bi bi-person-vcard icon"></i>
+                <h3>What documents and process do I need for KYC to start investing?</h3>
+                <i class="bi bi-chevron-down arrow"></i>
+              </button>
+              <div id="fq7" class="faq-panel" role="region">
+                <p>KYC requires your PAN, Aadhaar, bank account details, and a valid mobile number/email. The process itself is paperless: an in-person verification or Aadhaar eKYC with OTP, a FATCA/CRS declaration, and a risk-profile questionnaire. For SIPs, you also sign a one-time NACH auto-debit mandate. We assist you through the entire onboarding.</p>
+              </div>
+            </article>
+            <article class="faq-card">
+              <button class="faq-btn" aria-expanded="false" aria-controls="fq8">
+                <i class="bi bi-shield-check icon"></i>
+                <h3>Are bonds and fixed-income products safe?</h3>
+                <i class="bi bi-chevron-down arrow"></i>
+              </button>
+              <div id="fq8" class="faq-panel" role="region">
+                <p>No investment is completely risk-free. Bonds and NCDs carry credit risk (the issuer's ability to pay) and interest-rate risk, while bank FDs are insured up to ₹5 lakh per bank under DICGC. Higher-rated paper lowers default risk but also returns. We match the tenure and credit quality of fixed-income instruments to your goals so the risk stays within your comfort level.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- QUIZ MODE -->
+        <div class="quiz-mode" id="quizMode" role="tabpanel" aria-hidden="true">
+          <div class="quiz-q" data-q="1">
+            <div class="q-header"><span class="q-num">1</span><h3>What is the minimum amount needed to start an SIP?</h3></div>
+            <div class="quiz-options">
+              <button class="quiz-opt">&#8377;10,000 / month</button>
+              <button class="quiz-opt" data-correct="true">&#8377;500 / month</button>
+              <button class="quiz-opt">&#8377;1,00,000 one-time</button>
+              <button class="quiz-opt">&#8377;50,000 / month</button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+          <div class="quiz-q" data-q="2">
+            <div class="q-header"><span class="q-num">2</span><h3>Which statement is TRUE about a Portfolio Management Service (PMS)?</h3></div>
+            <div class="quiz-options">
+              <button class="quiz-opt">It pools money from thousands of unknown investors</button>
+              <button class="quiz-opt" data-correct="true">It is a personalized portfolio, usually for a minimum of &#8377;50 lakh</button>
+              <button class="quiz-opt">It is unregulated</button>
+              <button class="quiz-opt">You can start with &#8377;500</button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+          <div class="quiz-q" data-q="3">
+            <div class="q-header"><span class="q-num">3</span><h3>Where is India's first International Financial Services Centre (IFSC), GIFT City, located?</h3></div>
+            <div class="quiz-options">
+              <button class="quiz-opt">Mumbai, Maharashtra</button>
+              <button class="quiz-opt">Bengaluru, Karnataka</button>
+              <button class="quiz-opt" data-correct="true">Gandhinagar, Gujarat</button>
+              <button class="quiz-opt">New Delhi</button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+          <div class="quiz-q" data-q="4">
+            <div class="q-header"><span class="q-num">4</span><h3>What does SWP stand for in investing?</h3></div>
+            <div class="quiz-options">
+              <button class="quiz-opt">Systematic Investment Plan</button>
+              <button class="quiz-opt">Smart Wealth Portfolio</button>
+              <button class="quiz-opt" data-correct="true">Systematic Withdrawal Plan</button>
+              <button class="quiz-opt">Standard Withdrawal Process</button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+          <div class="quiz-q" data-q="5">
+            <div class="q-header"><span class="q-num">5</span><h3>What is required to complete KYC before you start investing?</h3></div>
+            <div class="quiz-options">
+              <button class="quiz-opt">Only a bank statement</button>
+              <button class="quiz-opt" data-correct="true">PAN, Aadhaar, bank details &amp; a valid mobile/email</button>
+              <button class="quiz-opt">Only a passport</button>
+              <button class="quiz-opt">Nothing — investing needs no paperwork</button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+          <div class="quiz-q" data-q="6">
+            <div class="q-header"><span class="q-num">6</span><h3>Which investment categories does MJR Fin Wealth cover on one platform?</h3></div>
+            <div class="quiz-options">
+              <button class="quiz-opt">Only fixed deposits</button>
+              <button class="quiz-opt">Only gold and property</button>
+              <button class="quiz-opt" data-correct="true">Mutual Funds, PMS, AIFs, SIFs, Bonds, Fixed Income, Loans &amp; GIFT City</button>
+              <button class="quiz-opt">Only cryptocurrency</button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+          <div class="quiz-q" data-q="7">
+            <div class="q-header"><span class="q-num">7</span><h3>As per Budget 2024, long-term capital gains above &#8377;1.25 lakh on equity funds are taxed at:</h3></div>
+            <div class="quiz-options">
+              <button class="quiz-opt">10%</button>
+              <button class="quiz-opt" data-correct="true">12.5%</button>
+              <button class="quiz-opt">20%</button>
+              <button class="quiz-opt">30%</button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+          <div class="quiz-q" data-q="8">
+            <div class="q-header"><span class="q-num">8</span><h3>Bonds and NCDs carry which types of risk?</h3></div>
+            <div class="quiz-options">
+              <button class="quiz-opt">No risk at all</button>
+              <button class="quiz-opt" data-correct="true">Credit risk and interest-rate risk</button>
+              <button class="quiz-opt">Only currency risk</button>
+              <button class="quiz-opt">Only inflation risk</button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+
+          <div class="quiz-nav">
+            <button id="quizPrev" disabled><i class="bi bi-chevron-left"></i> Previous</button>
+            <button id="quizNext">Next <i class="bi bi-chevron-right"></i></button>
+          </div>
+          <div class="quiz-progress">
+            <div class="bar"><div class="fill" id="quizFill"></div></div>
+            <span id="quizProgressText">Question 1 of 8</span>
+          </div>
+          <div class="quiz-result" id="quizResult">
+            <div class="trophy"><i class="bi bi-trophy"></i></div>
+            <h3>Quiz Complete!</h3>
+            <p>You scored <strong id="quizScore">0</strong> out of 8</p>
+            <button class="retake" id="quizRetake">Retake Quiz</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= OUR PLANNING PROCESS (05 zigzag) ======= -->
+  <section class="block process-flow">
+    <div class="container">
+      <div class="section-head anim">
+        <div class="eyebrow">Our Planning Process</div>
+        <h2>A Simple Process Towards Your <span class="green">Financial Goals</span></h2>
+        <p>From the first conversation to lifelong review — a clear, guided journey.</p>
+      </div>
+
+      <div class="pf-timeline">
+        <div class="pf-row anim anim-d1">
+          <div class="pf-pin">01</div>
+          <div class="pf-card">
+            <div class="pf-thumb"><img loading="lazy" src="images/understand.jpg" alt="Understand"></div>
+            <div class="pf-body">
+              <small>Step 01</small>
+              <h3>Understand</h3>
+              <p>We begin by understanding you, your financial requirements, and your future goals.</p>
+            </div>
+          </div>
+        </div>
+        <div class="pf-row anim anim-d2">
+          <div class="pf-pin">02</div>
+          <div class="pf-card">
+            <div class="pf-thumb"><img loading="lazy" src="images/analyse.jpg" alt="Analyse"></div>
+            <div class="pf-body">
+              <small>Step 02</small>
+              <h3>Analyse</h3>
+              <p>We assess your priorities and identify the areas that require financial planning.</p>
+            </div>
+          </div>
+        </div>
+        <div class="pf-row anim anim-d3">
+          <div class="pf-pin">03</div>
+          <div class="pf-card">
+            <div class="pf-thumb"><img loading="lazy" src="images/plan.jpg" alt="Plan"></div>
+            <div class="pf-body">
+              <small>Step 03</small>
+              <h3>Plan</h3>
+              <p>A structured financial approach is developed based on your individual requirements.</p>
+            </div>
+          </div>
+        </div>
+        <div class="pf-row anim anim-d4">
+          <div class="pf-pin">04</div>
+          <div class="pf-card">
+            <div class="pf-thumb"><img loading="lazy" src="images/our_services/hand-adding-coins-stack-covered-dirt-plants-opt.jpg" alt="Implement"></div>
+            <div class="pf-body">
+              <small>Step 04</small>
+              <h3>Implement</h3>
+              <p>We help you explore and proceed with suitable financial solutions.</p>
+            </div>
+          </div>
+        </div>
+        <div class="pf-row anim anim-d5">
+          <div class="pf-pin">05</div>
+          <div class="pf-card">
+            <div class="pf-thumb"><img loading="lazy" src="images/review.jpg" alt="Review"></div>
+            <div class="pf-body">
+              <small>Step 05</small>
+              <h3>Review</h3>
+              <p>Financial planning is a continuous journey. We provide ongoing support and assistance as your needs evolve.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= ONE PLATFORM (04 horizontal snap carousel) ======= -->
+  <section class="block one-platform">
+    <div class="container">
+      <div class="section-head anim">
+        <div class="eyebrow">Why Invest Through One Platform?</div>
+        <h2>Simple Access. Informed Decisions. <span class="green">Better Financial Planning.</span></h2>
+        <p>Managing different financial opportunities can sometimes be complicated. Through our platform and association with FundsIndia Partner, you can explore multiple financial solutions with professional guidance.</p>
+      </div>
+
+      <div class="track">
+        <div class="slide anim anim-d1">
+          <div class="num">01</div>
+          <div class="ic"><i class="bi bi-boxes"></i></div>
+          <h4>Multiple Financial Solutions</h4>
+          <p>Everything you need in one place — mutual funds, PMS, bonds and more.</p>
+        </div>
+        <div class="slide anim anim-d2">
+          <div class="num">02</div>
+          <div class="ic"><i class="bi bi-people"></i></div>
+          <h4>Guidance from a Dedicated Team</h4>
+          <p>Professional advisors who know your goals and guide every decision.</p>
+        </div>
+        <div class="slide anim anim-d3">
+          <div class="num">03</div>
+          <div class="ic"><i class="bi bi-globe-asia-australia"></i></div>
+          <h4>Convenient Access</h4>
+          <p>Diverse financial opportunities with easy, convenient reach.</p>
+        </div>
+        <div class="slide anim anim-d4">
+          <div class="num">04</div>
+          <div class="ic"><i class="bi bi-clipboard-check"></i></div>
+          <h4>Structured Financial Planning</h4>
+          <p>A clear and organised plan built around your personal goals.</p>
+        </div>
+        <div class="slide anim anim-d5">
+          <div class="num">05</div>
+          <div class="ic"><i class="bi bi-person-heart"></i></div>
+          <h4>Personalized Support</h4>
+          <p>Solutions tailored to your income, needs and future milestones.</p>
+        </div>
+        <div class="slide anim anim-d6">
+          <div class="num">06</div>
+          <div class="ic"><i class="bi bi-arrow-repeat"></i></div>
+          <h4>Long-Term Relationship Focused</h4>
+          <p>Ongoing support that adjusts as your life evolves.</p>
+        </div>
+      </div>
+
+      <div class="hint"><i class="bi bi-arrow-left-right"></i>  Drag or scroll to explore all six benefits</div>
+    </div>
+  </section>
+
+    <!-- ======= TESTIMONIALS ======= -->
+  <section class="block testimonials">
+    <div class="container">
+      <div class="section-head anim">
+        <div class="eyebrow">Testimonials</div>
+        <h2>What Our <span class="green">Clients Say</span></h2>
+      </div>
+      <div class="row g-4">
+        <div class="col-12 col-md-6 col-lg-4 anim">
+          <div class="card t-card border-0 h-100">
+            <div class="t-head">
+              <div class="avatar">SR</div>
+              <div><strong>Rahul</strong><span>Homeowner &amp; Investor</span></div>
+              <span class="verified">&#10003; Verified</span>
+            </div>
+            <div class="t-body">
+              <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <p>&ldquo;MJR Fin Wealth Finance helped us organize our finances and invest confidently for our future.&rdquo;</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 anim">
+          <div class="card t-card border-0 h-100">
+            <div class="t-head">
+              <div class="avatar">PK</div>
+              <div><strong>Priya</strong><span>Retiring Professional</span></div>
+              <span class="verified">&#10003; Verified</span>
+            </div>
+            <div class="t-body">
+              <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <p>&ldquo;Their retirement planning strategy gave us complete clarity and peace of mind.&rdquo;</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 anim">
+          <div class="card t-card border-0 h-100">
+            <div class="t-head">
+              <div class="avatar">AM</div>
+              <div><strong>Anand</strong><span>Small Business Owner</span></div>
+              <span class="verified">&#10003; Verified</span>
+            </div>
+            <div class="t-body">
+              <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <p>&ldquo;Professional, transparent, and always available to guide us.&rdquo;</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 anim">
+          <div class="card t-card border-0 h-100">
+            <div class="t-head">
+              <div class="avatar">SG</div>
+              <div><strong>Sneha</strong><span>Young Professional</span></div>
+              <span class="verified">&#10003; Verified</span>
+            </div>
+            <div class="t-body">
+              <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <p>&ldquo;Clear guidance and a strategy perfectly matched to our goals.&rdquo;</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 anim">
+          <div class="card t-card border-0 h-100">
+            <div class="t-head">
+              <div class="avatar">VR</div>
+              <div><strong>Vikram</strong><span>Startup Founder</span></div>
+              <span class="verified">&#10003; Verified</span>
+            </div>
+            <div class="t-body">
+              <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <p>&ldquo;Simplified complex decisions and kept us on track every quarter.&rdquo;</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 anim">
+          <div class="card t-card border-0 h-100">
+            <div class="t-head">
+              <div class="avatar">MA</div>
+              <div><strong>Malar</strong><span>Doctor</span></div>
+              <span class="verified">&#10003; Verified</span>
+            </div>
+            <div class="t-body">
+              <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <p>&ldquo;Truly personalized advice that respected my risk appetite.&rdquo;</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= CONTACT ======= -->
+  <section class="block contact" id="contact">
+    <div class="container">
+      <div class="section-head anim">
+        <div class="eyebrow">Contact Us</div>
+        <h2>Get in <span class="green">Touch</span></h2>
+        <p>Have a question or ready to start? Reach out and our advisors will get back to you shortly.</p>
+      </div>
+      <div class="row g-4 align-items-stretch">
+        <div class="col-12 col-lg-5 anim anim-d1">
+          <div class="info-panel">
+            <h3>Talk to Our Advisors</h3>
+            <p>We're here to guide you at every step of your financial journey.</p>
+            <div class="info-item"><div class="ic"><i class="bi bi-telephone"></i></div><div><strong>Phone</strong><a href="tel:+918754500310">+91 87545 00310</a></div></div>
+            <div class="info-item"><div class="ic"><i class="bi bi-envelope"></i></div><div><strong>Email</strong><a href="mailto:investalphagrow@gmail.com">investalphagrow@gmail.com</a></div></div>
+            <div class="info-item"><div class="ic"><i class="bi bi-geo-alt"></i></div><div><strong>Office</strong><span>Chennai, India</span></div></div>
+            <div class="info-item"><div class="ic"><i class="bi bi-clock"></i></div><div><strong>Working Hours</strong><span>Mon &ndash; Sat, 9:00 AM &ndash; 7:00 PM</span></div></div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-7 anim anim-d2">
+          <div class="form-panel">
+            <form id="contact-form" class="row g-3" action="send_mail.php" method="post" novalidate>
+              <input type="text" name="ag_check" id="ag_check" tabindex="-1" autocomplete="off" readonly aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">
+              <input type="hidden" name="csrf_token" id="csrf_token">
+              <div class="col-12 col-md-6"><label class="form-label">Full Name</label><input type="text" class="form-control" name="name" placeholder="Enter your name" required></div>
+              <div class="col-12 col-md-6"><label class="form-label">Phone Number</label><input type="tel" class="form-control" name="phone" placeholder="+91 XXXXX XXXXX" required></div>
+              <div class="col-12"><label class="form-label">Email</label><input type="email" class="form-control" name="email" placeholder="you@example.com" required></div>
+              <div class="col-12"><label class="form-label">Services</label><select class="form-select rounded-0 border-secondary-subtle" name="subject"><option selected>General Inquiry</option><option>Personal Financial Planning</option><option>Mutual Fund Investment</option><option>Child Education Investment</option><option>Goal Based Investment</option><option>Retirement Planning</option><option>Health Insurance Plan</option><option>Life Insurance Plan</option><option>Emergency Fund</option><option>Bonds</option></select></div>
+              <div class="col-12"><label class="form-label">Message <span class="text-muted" style="font-weight:400;">(optional)</span></label><textarea class="form-control" name="message" rows="4" placeholder="How can we help you? (optional)"></textarea></div>
+              <div class="col-12">
+                <label class="form-label">Complete CAPTCHA</label>
+                <div class="captcha-row">
+                  <img id="captcha-img" src="captcha.php" alt="CAPTCHA code" class="captcha-img">
+                  <button type="button" id="captcha-refresh" class="btn-captcha-refresh" aria-label="Refresh captcha">&#8635;</button>
+                  <input type="text" class="form-control captcha-input" name="captcha" autocomplete="off" maxlength="5" placeholder="Enter code" required>
+                </div>
+              </div>
+              <div class="col-12"><button type="submit" class="btn btn-submit">Send Message</button></div>
+              <div class="col-12"><div id="form-status" class="form-status" role="alert"></div></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= FOOTER ======= -->
+  <footer class="anim">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+<a href="#home" class="brand"><img class="brand-logo" src="images/logo.png" alt="MJR Fin Wealth Finance logo" width="308" height="80"></a>
+          <p>Your trusted partner in wealth creation and financial security. Personalized guidance for every goal.</p>
+          <div class="social-links">
+            <a href="https://www.instagram.com/investalphagrow?igsh=MTl3aHd2YnFsZ2d3cg==" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.facebook.com/p/Invest-Alphagrow-61593113082585/" target="_blank" rel="noopener" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+<a href="#about">About Us</a>
+          <a href="#services">Services</a>
+          <a href="blogs/index.html">Blogs</a>
+<a href="#calculators">Calculator</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <a href="#services">Personal Financial Planning</a>
+          <a href="#services">Mutual Fund Investment</a>
+          <a href="#services">Child Education Investment</a>
+          <a href="#services">Goal Based Investment</a>
+          <a href="#services">Retirement Planning</a>
+          <a href="#services">Health Insurance Plan</a>
+          <a href="#services">Life Insurance Plan</a>
+          <a href="#services">Emergency Fund</a>
+          <a href="#services">Bonds</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <a href="tel:+918754500310">+91 87545 00310</a>
+          <a href="mailto:investalphagrow@gmail.com">investalphagrow@gmail.com</a>
+          <a href="mailto:info@alphagrowwealth.in">info@alphagrowwealth.in</a>
+          <a href="mailto:support@alphagrowwealth.in">support@alphagrowwealth.in</a>
+          <a href="#contact">Chennai, India</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&#169; 2026 MJR Fin Wealth Finance. All rights reserved.</span>
+        <span>Design and Developed By <a href="https://thecircledesigns.com/" style="text-decoration:none;color:inherit;display:inline;">Circle Designs</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="calculator/engine.js?v=3"></script>
+
+  <script>
+    (function () {
+      var btn = document.querySelector('.menu-btn');
+      var nav = document.querySelector('.nav-links');
+      if (!btn || !nav) return;
+      btn.addEventListener('click', function () {
+        nav.classList.toggle('open');
+      });
+      nav.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          nav.classList.remove('open');
+        });
+      });
+    })();
+
+    // FADE-IN-UP SCROLL REVEAL
+    (function () {
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.05, rootMargin: '0px' });
+      document.querySelectorAll('.anim').forEach(function (el) { observer.observe(el); });
+      // Hero is above the fold: reveal immediately so its content
+      // never stays shifted/clipped before the observer fires.
+      document.querySelectorAll('.hero .anim').forEach(function (el) { el.classList.add('visible'); });
+    })();
+
+    // CONTACT FORM: validation + AJAX submit to SMTP backend
+    (function () {
+      var form = document.getElementById('contact-form');
+      if (!form) return;
+      var status = document.getElementById('form-status');
+      function show(type, text) {
+        status.className = 'form-status show ' + type;
+        status.textContent = text;
+      }
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var data = new FormData(form);
+        var name = (data.get('name') || '').trim();
+        var phone = (data.get('phone') || '').trim();
+        var email = (data.get('email') || '').trim();
+        var msg = (data.get('message') || '').trim();
+        var cap = (data.get('captcha') || '').trim();
+        if (name.length < 2) return show('error', 'Please enter your full name.');
+        var email = (data.get('email') || '').trim();
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return show('error', 'Please enter a valid email address.');
+        if (cap.length < 5) return show('error', 'Please enter the captcha code shown.');
+
+        var btn = form.querySelector('.btn-submit');
+        btn.disabled = true; btn.textContent = 'Sending...';
+
+        function refreshCaptcha() {
+          var im = document.getElementById('captcha-img');
+          if (im) im.src = 'captcha.php?' + Date.now();
+          var ci = document.getElementById('captcha');
+          if (ci) ci.value = '';
+        }
+
+        function send() {
+          fetch('send_mail.php', { method: 'POST', body: new FormData(form) })
+            .then(function (r) { return r.json(); })
+            .then(function (res) {
+              btn.disabled = false; btn.textContent = 'Send Message';
+              refreshCaptcha();
+              if (res && res.ok) { form.reset(); show('success', res.msg || 'Thank you! Your message has been sent.'); }
+              else { show('error', (res && res.msg) || 'Sorry, we could not send your message. Please try again.'); }
+            })
+            .catch(function () {
+              btn.disabled = false; btn.textContent = 'Send Message';
+              refreshCaptcha();
+              show('error', 'Network error. Please check your connection and try again.');
+            });
+        }
+
+        // Ensure a CSRF token is present (fetched once) before submitting.
+        var tok = document.getElementById('csrf_token');
+        if (tok && !tok.value) {
+          fetch('csrf_token.php')
+            .then(function (r) { return r.json(); })
+            .then(function (j) { if (tok && j.token) tok.value = j.token; send(); })
+            .catch(function () { send(); });
+        } else {
+          send();
+        }
+      });
+
+      var capRefresh = document.getElementById('captcha-refresh');
+      if (capRefresh) capRefresh.addEventListener('click', function () {
+        var im = document.getElementById('captcha-img');
+        if (im) im.src = 'captcha.php?' + Date.now();
+        var ci = document.getElementById('captcha');
+        if (ci) ci.value = '';
+        if (ci) ci.focus();
+      });
+    })();
+
+    // WHATSAPP "BOOK FOR FREE CONSULTATION" (Services section)
+    (function () {
+      var wpNumber = '918754500310';
+      function buildMsg(service) {
+        var msg = 'Hello MJR Fin Wealth Finance,\n\n'
+          + 'I would like to book a *Free Consultation* for the following service:\n\n'
+          + '*Selected Service:* ' + service + '\n\n'
+          + 'Please share the next steps, plans, and any details I should know.\n\n'
+          + 'Name: \nPhone: \nEmail: \n\n'
+          + 'Thank you!';
+        return encodeURIComponent(msg);
+      }
+      var links = document.querySelectorAll('.svc-card .link');
+      links.forEach(function (link) {
+        var card = link.closest('.svc-card');
+        var service = card && card.querySelector('h3') ? card.querySelector('h3').textContent.trim() : 'Financial Consultation';
+        var url = 'https://wa.me/' + wpNumber + '?text=' + buildMsg(service);
+        link.setAttribute('href', url);
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          window.open(url, 'alphagrow_whatsapp');
+        });
+      });
+    })();
+
+    (function () {
+      var calcs = {
+        sip: {
+          icon: '<i class="bi bi-graph-up-arrow"></i>', title: 'SIP Calculator', label: 'Maturity Value',
+          desc: 'See how your monthly investments can grow over time.',
+          details: [
+            'Invest a fixed amount every month to build long-term wealth.',
+            'Returns compound over your chosen time period.',
+            'Get an instant estimate of your total maturity value.'
+          ],
+          fields: [
+            { label: 'Monthly investment (â‚¹)', placeholder: 'Monthly investment (â‚¹)', def: 5000 },
+            { label: 'Expected return rate (% p.a.)', placeholder: 'Expected return rate (% p.a.)', def: 12 },
+            { label: 'Time period (Years)', placeholder: 'Time period (Years)', def: 10 }
+          ]
+        },
+        lumpsum: {
+          icon: '<i class="bi bi-cash-stack"></i>', title: 'Lumpsum Calculator', label: 'Total value',
+          desc: 'Project the growth of a one-time investment over time.',
+          details: [
+            'Grow a single large investment without monthly deposits.',
+            'Higher expected returns increase your final corpus.',
+            'See the future value of your principal at maturity.'
+          ],
+          fields: [
+            { label: 'Total investment (â‚¹)', placeholder: 'Total investment (â‚¹)', def: 100000 },
+            { label: 'Expected return rate (% p.a.)', placeholder: 'Expected return rate (% p.a.)', def: 12 },
+            { label: 'Time period (Years)', placeholder: 'Time period (Years)', def: 10 }
+          ]
+        },
+        swp: {
+          icon: '<i class="bi bi-arrow-down-circle"></i>', title: 'SWP Calculator', label: 'Remaining Corpus',
+          desc: 'Plan regular withdrawals from your investment corpus.',
+          details: [
+            'Withdraw a fixed amount from your corpus every month.',
+            'Understand how long your savings can last.',
+            'Estimate the corpus remaining after your withdrawal period.'
+          ],
+          fields: [
+            { label: 'Total investment (â‚¹)', placeholder: 'Total investment (â‚¹)', def: 5000000 },
+            { label: 'Withdrawal per month (â‚¹)', placeholder: 'Withdrawal per month (â‚¹)', def: 25000 },
+            { label: 'Expected return rate (% p.a.)', placeholder: 'Expected return rate (% p.a.)', def: 8 },
+            { label: 'Time period (Years)', placeholder: 'Time period (Years)', def: 10 }
+          ]
+        },
+        goal: {
+          icon: '<i class="bi bi-bullseye"></i>', title: 'Goal Based Investment', label: 'Required Monthly Amount',
+          desc: 'Calculate the monthly amount needed to reach your financial goal.',
+          details: [
+            'Set a target amount for any future goal.',
+            'Include existing investments to reduce required monthly amount.',
+            'Estimate the monthly SIP needed to achieve that goal.',
+            'Start investing today to reach your target on time.'
+          ],
+          fields: [
+            { label: 'Goal amount (â‚¹)', placeholder: 'Goal amount (â‚¹)', def: 1000000 },
+            { label: 'Current investment (â‚¹)', placeholder: 'Current investment (â‚¹)', def: 0 },
+            { label: 'Expected return rate (% p.a.)', placeholder: 'Expected return rate (% p.a.)', def: 12 },
+            { label: 'Time period (Years)', placeholder: 'Time period (Years)', def: 10 }
+          ]
+        },
+        retirement: {
+          icon: '<i class="bi bi-bank"></i>', title: 'Retirement Planning', label: 'Monthly Savings Needed',
+          desc: 'Find out how much to save today for a comfortable retirement.',
+          details: [
+            'Build the corpus you need for a stress-free retirement.',
+            'Start early to keep your monthly savings affordable.',
+            'Estimate your required monthly savings instantly.'
+          ],
+          fields: [
+            { label: 'Current age (Years)', placeholder: 'Current age (Years)', def: 30 },
+            { label: 'Retirement age (Years)', placeholder: 'Retirement age (Years)', def: 60 },
+            { label: 'Current monthly expenses (â‚¹)', placeholder: 'Current monthly expenses (â‚¹)', def: 50000 },
+            { label: 'Expected inflation (% p.a.)', placeholder: 'Expected inflation (% p.a.)', def: 6 },
+            { label: 'Pre-retirement return (% p.a.)', placeholder: 'Pre-retirement return (% p.a.)', def: 12 },
+            { label: 'Post-retirement return (% p.a.)', placeholder: 'Post-retirement return (% p.a.)', def: 8 },
+            { label: 'Life expectancy (Years)', placeholder: 'Life expectancy (Years)', def: 85 },
+            { label: 'Existing savings (â‚¹)', placeholder: 'Existing savings (â‚¹)', def: 500000 }
+          ]
+        },
+        inflation: {
+          icon: '<i class="bi bi-receipt"></i>', title: 'Inflation Calculator', label: 'Future Cost',
+          desc: 'Understand the future cost of today\'s expenses over time.',
+          details: [
+            'See how much your current expenses will cost later.',
+            'Plan for rising prices across your goals.',
+            'Know the real future value of your money.'
+          ],
+          fields: [
+            { label: 'Current cost (â‚¹)', placeholder: 'Current cost (â‚¹)', def: 50000 },
+            { label: 'Inflation rate (% p.a.)', placeholder: 'Inflation rate (% p.a.)', def: 6 },
+            { label: 'Time period (Years)', placeholder: 'Time period (Years)', def: 10 }
+          ]
+        },
+        tax: {
+          icon: '<i class="bi bi-graph-up-arrow"></i>', title: 'Income Tax Calculator', label: 'Estimated tax',
+          desc: 'Compute your tax liability under the current tax regime.',
+          details: [
+            'Enter your annual income to estimate your tax.',
+            'Include deductions to lower your tax burden.',
+            'Get a quick estimate of your total tax due.'
+          ],
+          fields: [
+            { label: 'Annual income (â‚¹ per annum)', placeholder: 'Annual income (â‚¹ per annum)', def: 1000000 },
+            { label: 'Deductions (80C) (â‚¹)', placeholder: 'Deductions (80C) (â‚¹)', def: 150000 },
+            { label: 'Other deductions (â‚¹)', placeholder: 'Other deductions (â‚¹)', def: 0 },
+            { label: 'Tax regime', placeholder: 'Tax regime', def: 'new' }
+          ]
+        },
+        fd: {
+          icon: '<i class="bi bi-piggy-bank"></i>', title: 'FD Calculator', label: 'Total value',
+          desc: 'Estimate returns on your fixed deposit investment.',
+          details: [
+            'Earn guaranteed interest on a one-time deposit.',
+            'Longer tenures compound your returns higher.',
+            'Estimate your final maturity amount instantly.'
+          ],
+          fields: [
+            { label: 'Total investment (â‚¹)', placeholder: 'Total investment (â‚¹)', def: 100000 },
+            { label: 'Rate of interest (% p.a.)', placeholder: 'Rate of interest (% p.a.)', def: 7 },
+            { label: 'Time period (Years)', placeholder: 'Time period (Years)', def: 5 },
+            { label: 'Compounding frequency', placeholder: 'Compounding frequency', def: 'quarterly' }
+          ]
+        },
+        rd: {
+          icon: '<i class="bi bi-currency-rupee"></i>', title: 'RD Calculator', label: 'Maturity Amount',
+          desc: 'Project the maturity value of recurring monthly deposits.',
+          details: [
+            'Save a fixed amount every month with discipline.',
+            'Interest compounds on your deposits.',
+            'Estimate the total amount at maturity.'
+          ],
+          fields: [
+            { label: 'Monthly investment (â‚¹)', placeholder: 'Monthly investment (â‚¹)', def: 5000 },
+            { label: 'Expected return rate (% p.a.)', placeholder: 'Expected return rate (% p.a.)', def: 7 },
+            { label: 'Time period (Years)', placeholder: 'Time period (Years)', def: 5 }
+          ]
+        },
+        emi: {
+          icon: '<i class="bi bi-house-door"></i>', title: 'EMI Calculator', label: 'Monthly EMI',
+          desc: 'Plan your loan repayments with accurate monthly EMI estimates.',
+          details: [
+            'Plan home, car, or personal loan repayments.',
+            'See your fixed monthly EMI instantly.',
+            'Compare tenures to pick the right loan plan.'
+          ],
+          fields: [
+            { label: 'Loan amount (â‚¹)', placeholder: 'Loan amount (â‚¹)', def: 5000000 },
+            { label: 'Rate of interest (% p.a.)', placeholder: 'Rate of interest (% p.a.)', def: 9 },
+            { label: 'Loan tenure (Years)', placeholder: 'Loan tenure (Years)', def: 20 }
+          ]
+        }
+      };
+      var icon = document.getElementById('cf-icon');
+      var title = document.getElementById('cf-title');
+      var desc = document.getElementById('cf-desc');
+      var detailsEl = document.getElementById('cf-details');
+      var form = document.getElementById('cf-form');
+      var links = document.querySelectorAll('.calc-link');
+      var current = 'sip';
+      if (!icon || !title || !desc || !form) return;
+      function render(key) {
+        var c = calcs[key] || calcs.sip;
+        current = key;
+        icon.innerHTML = c.icon;
+        title.textContent = c.title;
+        desc.textContent = c.desc;
+        detailsEl.innerHTML = c.details.map(function (d) {
+          return '<li><i class="bi bi-check2"></i>' + d + '</li>';
+        }).join('');
+        var html = '';
+        c.fields.forEach(function (f, i) {
+          html += '<label for="cf-' + key + '-' + i + '">' + f.label + '</label>';
+          if (typeof f.def === 'string' && (f.def === 'new' || f.def === 'old' || f.def === 'yearly' || f.def === 'quarterly' || f.def === 'monthly' || f.def === 'half-yearly' || f.def === 'yes' || f.def === 'no')) {
+            // Handle dropdown/select inputs
+            var options = '';
+            if (f.def === 'new' || f.def === 'old') {
+              options = '<option value="new" ' + (f.def === 'new' ? 'selected' : '') + '>New Regime</option><option value="old" ' + (f.def === 'old' ? 'selected' : '') + '>Old Regime</option>';
+            } else if (f.def === 'yes' || f.def === 'no') {
+              options = '<option value="no" ' + (f.def === 'no' ? 'selected' : '') + '>No</option><option value="yes" ' + (f.def === 'yes' ? 'selected' : '') + '>Yes</option>';
+            } else {
+              options = '<option value="yearly" ' + (f.def === 'yearly' ? 'selected' : '') + '>Yearly</option><option value="half-yearly" ' + (f.def === 'half-yearly' ? 'selected' : '') + '>Half-Yearly</option><option value="quarterly" ' + (f.def === 'quarterly' ? 'selected' : '') + '>Quarterly</option><option value="monthly" ' + (f.def === 'monthly' ? 'selected' : '') + '>Monthly</option>';
+            }
+            html += '<select id="cf-' + key + '-' + i + '" class="cf-input" data-idx="' + i + '">' + options + '</select>';
+          } else {
+            // Handle number inputs
+            html += '<input type="number" id="cf-' + key + '-' + i + '" class="cf-input" data-idx="' + i + '" placeholder="' + f.placeholder + '">';
+          }
+        });
+        html += '<div class="result" id="cf-result"></div>';
+        html += '<button type="button" class="calc-btn">Calculate</button>';
+        form.innerHTML = html;
+        form.querySelectorAll('.cf-input').forEach(function (el) {
+          el.addEventListener('input', updateResult);
+        });
+        var btn = form.querySelector('.calc-btn');
+        if (btn) btn.addEventListener('click', updateResult);
+        updateResult();
+      }
+      // Enhanced Indian number formatting
+      function fmt(x, decimals) {
+        if (!isFinite(x) || isNaN(x)) x = 0;
+        if (x < 0) x = 0;
+        var decimalPlaces = decimals !== undefined ? decimals : 0;
+        return x.toLocaleString('en-IN', {
+          minimumFractionDigits: decimalPlaces,
+          maximumFractionDigits: decimalPlaces
+        });
+      }
+
+      // Validation utilities
+      function validatePositive(value, fieldName) {
+        if (isNaN(value) || value <= 0) {
+          return { valid: false, message: fieldName + ' must be greater than 0' };
+        }
+        return { valid: true };
+      }
+
+      function validateNonNegative(value, fieldName) {
+        if (isNaN(value) || value < 0) {
+          return { valid: false, message: fieldName + ' must be 0 or greater' };
+        }
+        return { valid: true };
+      }
+
+      function validatePercentage(value, fieldName) {
+        if (isNaN(value) || value < 0 || value > 100) {
+          return { valid: false, message: fieldName + ' must be between 0 and 100' };
+        }
+        return { valid: true };
+      }
+
+      function validateRange(value, min, max, fieldName) {
+        if (isNaN(value) || value < min || value > max) {
+          return { valid: false, message: fieldName + ' must be between ' + min + ' and ' + max };
+        }
+        return { valid: true };
+      }
+      // Disable old-regime-only deduction inputs under the New Regime and
+      // mark them as not applicable; re-enable them under the Old Regime.
+      function updateTaxInputs() {
+        var regimeSel = document.getElementById('cf-tax-3');
+        if (!regimeSel) return;
+        var isNew = regimeSel.value === 'new';
+        [['cf-tax-1', 'Deductions (80C)'], ['cf-tax-2', 'Other deductions']].forEach(function (pair) {
+          var inp = document.getElementById(pair[0]);
+          var lbl = form.querySelector('label[for="' + pair[0] + '"]');
+          if (inp) { inp.disabled = isNew; inp.style.opacity = isNew ? '.5' : '1'; }
+          if (lbl) lbl.innerHTML = pair[1] + (isNew ? ' <em style="font-size:11px;color:#ff8a8a;">(Not applicable under New Regime)</em>' : '');
+        });
+      }
+
+      function updateResult() {
+        var box = form.querySelector('#cf-result');
+        if (!box) return;
+        if (current === 'tax') updateTaxInputs();
+        var vals = [];
+        form.querySelectorAll('.cf-input').forEach(function (el) {
+          if (el.tagName === 'SELECT') {
+            vals.push(el.value);
+          } else {
+            vals.push(parseFloat(el.value) || 0);
+          }
+        });
+        var a = vals[0] || 0;
+        var b = vals[1] || 0;
+        var c = vals[2] || 0;
+        var d = vals[3] || 0;
+        var e = vals[4] || 0;
+        var f = vals[5] || 0;
+        var g = vals[6] || 0;
+        var h = vals[7] || 0;
+        var calcType = current;
+        var v = 0;
+        var validationResult = { valid: true, message: '' };
+
+        // Neutral empty state: no results until the user enters values.
+        var anyValue = false;
+        form.querySelectorAll('.cf-input').forEach(function (el) {
+          if (el.tagName !== 'SELECT' && el.value !== '') anyValue = true;
+        });
+        if (!anyValue) {
+          box.innerHTML = '<div class="r-row"><span>Enter your details above to see the result.</span></div>';
+          return;
+        }
+
+        // Tax is now computed via the shared CalcEngine (calculateIncomeTax) so the
+        // homepage stays consistent with the dedicated calculator and current FY slabs.
+
+        // Validation based on calculator type
+        switch(calcType) {
+          case 'sip':
+            validationResult = validatePositive(a, 'Monthly investment');
+            if (validationResult.valid) validationResult = validateNonNegative(b, 'Expected return');
+            if (validationResult.valid) validationResult = validatePositive(c, 'Time period');
+            break;
+          case 'lumpsum':
+            validationResult = validatePositive(a, 'Total investment');
+            if (validationResult.valid) validationResult = validateNonNegative(b, 'Expected return');
+            if (validationResult.valid) validationResult = validatePositive(c, 'Time period');
+            break;
+          case 'swp':
+            validationResult = validatePositive(a, 'Total investment');
+            if (validationResult.valid) validationResult = validatePositive(b, 'Withdrawal amount');
+            if (validationResult.valid) validationResult = validateNonNegative(c, 'Expected return');
+            if (validationResult.valid) validationResult = validatePositive(d, 'Time period');
+            break;
+          case 'goal':
+            validationResult = validatePositive(a, 'Goal amount');
+            if (validationResult.valid) validationResult = validateNonNegative(b, 'Current investment');
+            if (validationResult.valid) validationResult = validateNonNegative(c, 'Expected return');
+            if (validationResult.valid) validationResult = validatePositive(d, 'Time period');
+            break;
+          case 'retirement':
+            validationResult = validateRange(a, 18, 80, 'Current age');
+            if (validationResult.valid) validationResult = validateRange(b, a + 1, 100, 'Retirement age');
+            if (validationResult.valid) validationResult = validatePositive(c, 'Current monthly expenses');
+            if (validationResult.valid) validationResult = validateRange(d, 0, 20, 'Inflation rate');
+            if (validationResult.valid) validationResult = validateRange(e, 0, 30, 'Pre-retirement return');
+            if (validationResult.valid) validationResult = validateRange(f, 0, 20, 'Post-retirement return');
+            if (validationResult.valid) validationResult = validateRange(g, b + 1, 120, 'Life expectancy');
+            if (validationResult.valid) validationResult = validateNonNegative(h, 'Existing savings');
+            break;
+          case 'inflation':
+            validationResult = validatePositive(a, 'Current cost');
+            if (validationResult.valid) validationResult = validateNonNegative(b, 'Inflation rate');
+            if (validationResult.valid) validationResult = validatePositive(c, 'Time period');
+            break;
+          case 'tax':
+            validationResult = validatePositive(a, 'Annual income');
+            if (validationResult.valid) validationResult = validateNonNegative(b, 'Deductions (80C)');
+            if (validationResult.valid) validationResult = validateNonNegative(c, 'Other deductions');
+            break;
+          case 'fd':
+            validationResult = validatePositive(a, 'Total investment');
+            if (validationResult.valid) validationResult = validateNonNegative(b, 'Interest rate');
+            if (validationResult.valid) validationResult = validatePositive(c, 'Time period');
+            // FD now has 4 fields, so we need to handle the compounding frequency
+            break;
+          case 'rd':
+            validationResult = validatePositive(a, 'Monthly investment');
+            if (validationResult.valid) validationResult = validateNonNegative(b, 'Interest rate');
+            if (validationResult.valid) validationResult = validatePositive(c, 'Time period');
+            break;
+          case 'emi':
+            validationResult = validatePositive(a, 'Loan amount');
+            if (validationResult.valid) validationResult = validateNonNegative(b, 'Interest rate');
+            if (validationResult.valid) validationResult = validatePositive(c, 'Loan tenure');
+            break;
+        }
+
+        if (!validationResult.valid) {
+          box.innerHTML = '<div class="r-row" style="color: #ff5a5a;"><span>' + validationResult.message + '</span></div>';
+          return;
+        }
+
+        switch(calcType) {
+          case 'sip':
+            v = CalcEngine.calculateSIP({ monthlyInvestment: a, returnRate: b, years: c }).totalValue;
+            break;
+          case 'lumpsum':
+            v = CalcEngine.calculateLumpsum({ amount: a, returnRate: b, years: c }).totalValue;
+            break;
+          case 'swp':
+            var swpRes = CalcEngine.calculateSWP({ initial: a, monthlyWithdrawal: b, returnRate: c, years: d });
+            v = { finalBalance: Math.round(swpRes.finalBalance * 100) / 100, totalWithdrawal: Math.round(swpRes.totalWithdrawn * 100) / 100 };
+            break;
+          case 'goal':
+            var gRes = CalcEngine.calculateGoal({ target: a, current: b, returnRate: c, years: d });
+            v = Math.round(gRes.requiredSIP * 100) / 100;
+            box.innerHTML =
+              '<div class="r-row"><span>Target amount</span><strong>&#8377; ' + fmt(a) + '</strong></div>' +
+              '<div class="r-row"><span>Current investment</span><strong>&#8377; ' + fmt(b) + '</strong></div>' +
+              '<div class="r-row"><span>Current investment FV</span><strong>&#8377; ' + fmt(Math.round(gRes.currentFV * 100) / 100) + '</strong></div>' +
+              '<div class="r-row"><span>Additional required</span><strong>&#8377; ' + fmt(Math.round(Math.max(0, gRes.required) * 100) / 100) + '</strong></div>' +
+              '<div class="r-row r-total"><span>Required monthly SIP</span><strong>&#8377; ' + fmt(v) + '</strong></div>' +
+              (gRes.noAdditionalNeeded ? '<div class="r-note">&#10003; Your current investment already meets the goal &mdash; no additional monthly SIP is required.</div>' : '');
+            return;
+          case 'retirement':
+            var rRes = CalcEngine.calculateRetirement({ currentAge: a, retirementAge: b, currentMonthlyExpense: c, inflationRate: d, returnBefore: e, returnAfter: f, lifeExpectancy: g, existingInvestment: h });
+            v = Math.round(rRes.monthlySIP * 100) / 100;
+            box.innerHTML =
+              '<div class="r-row"><span>Current monthly expense</span><strong>&#8377; ' + fmt(c) + '</strong></div>' +
+              '<div class="r-row"><span>Monthly expense at retirement</span><strong>&#8377; ' + fmt(Math.round(rRes.futureMonthlyExpense * 100) / 100) + '</strong></div>' +
+              '<div class="r-row"><span>Required retirement corpus</span><strong>&#8377; ' + fmt(Math.round(rRes.requiredCorpus * 100) / 100) + '</strong></div>' +
+              '<div class="r-row"><span>Existing savings FV</span><strong>&#8377; ' + fmt(Math.round(rRes.fvExisting * 100) / 100) + '</strong></div>' +
+              '<div class="r-row"><span>Additional corpus needed</span><strong>&#8377; ' + fmt(Math.round(rRes.additionalNeeded * 100) / 100) + '</strong></div>' +
+              '<div class="r-row r-total"><span>Required monthly SIP</span><strong>&#8377; ' + fmt(v) + '</strong></div>' +
+              (rRes.additionalNeeded <= 0 ? '<div class="r-note">&#10003; Your existing savings already meet the required retirement corpus &mdash; no additional monthly SIP is required.</div>' : '');
+            return;
+          case 'inflation':
+            var iRes = CalcEngine.calculateInflation({ amount: a, inflationRate: b, years: c });
+            v = Math.round(iRes.futureValue * 100) / 100;
+            box.innerHTML =
+              '<div class="r-row"><span>Current cost</span><strong>&#8377; ' + fmt(a) + '</strong></div>' +
+              '<div class="r-row"><span>Inflation rate</span><strong>' + fmt(b, 1) + '%</strong></div>' +
+              '<div class="r-row"><span>Time period</span><strong>' + c + ' Years</strong></div>' +
+              '<div class="r-row"><span>Future cost</span><strong>&#8377; ' + fmt(v) + '</strong></div>' +
+              '<div class="r-row r-total"><span>Inflation impact</span><strong>&#8377; ' + fmt(Math.round(iRes.inflationImpact * 100) / 100) + '</strong></div>';
+            return;
+          case 'tax':
+            var tRes = CalcEngine.calculateIncomeTax({ financialYear: 'AY2026-27', regime: d, grossSalary: a, section80C: b, otherDeductions: c });
+            var tDD = tRes.deductionBreakdown || {};
+            box.innerHTML =
+              '<div class="r-row"><span>Gross total income</span><strong>&#8377; ' + fmt(tRes.grossTotalIncome) + '</strong></div>' +
+              '<div class="r-row"><span>Standard deduction (salary)</span><strong>&#8377; ' + fmt(tDD.standardDeduction || 0) + '</strong></div>' +
+              '<div class="r-row"><span>Deductions u/s 80C' + (d === 'new' ? ' <em style="font-size:11px;color:#ff8a8a;">(not applicable under New Regime)</em>' : '') + '</span><strong>&#8377; ' + fmt(tDD.section80C || 0) + '</strong></div>' +
+              '<div class="r-row"><span>Total eligible deductions</span><strong>&#8377; ' + fmt(tRes.totalDeductions) + '</strong></div>' +
+              '<div class="r-row"><span>Taxable income</span><strong>&#8377; ' + fmt(tRes.taxableIncome) + '</strong></div>' +
+              '<div class="r-row"><span>Tax before rebate (slab tax)</span><strong>&#8377; ' + fmt(tRes.taxBeforeRebate) + '</strong></div>' +
+              '<div class="r-row"><span>Rebate u/s 87A</span><strong>&minus; &#8377; ' + fmt(tRes.rebate) + '</strong></div>' +
+              '<div class="r-row"><span>Income tax after rebate</span><strong>&#8377; ' + fmt(Math.round(tRes.incomeTaxAfterRebate * 100) / 100) + '</strong></div>' +
+              '<div class="r-row"><span>Cess (4%)</span><strong>&#8377; ' + fmt(tRes.cess) + '</strong></div>' +
+              '<div class="r-row r-total"><span>Total tax payable</span><strong>&#8377; ' + fmt(tRes.totalTaxPayable) + '</strong></div>';
+            return;
+          case 'fd':
+            v = CalcEngine.calculateFD({ principal: a, interestRate: b, tenure: c, compoundingFrequency: d }).maturityAmount;
+            break;
+          case 'rd':
+            v = CalcEngine.calculateRD({ monthlyDeposit: a, interestRate: b, years: c }).maturityAmount;
+            break;
+          case 'emi':
+            v = CalcEngine.calculateEMI({ loanAmount: a, interestRate: b, tenure: c }).emi;
+            break;
+          default:
+            v = a * Math.pow(1 + b / 100, c);
+        }
+        if (typeof v !== 'object' && (!isFinite(v) || isNaN(v))) v = 0;
+
+        if (calcType === 'sip') {
+          var months = c * 12;
+          var totalInvest = a * months;
+          var estReturns = v - totalInvest;
+          box.innerHTML =
+            '<div class="r-row"><span>Invested amount</span><strong>&#8377; ' + fmt(totalInvest) + '</strong></div>' +
+            '<div class="r-row"><span>Est. returns</span><strong>&#8377; ' + fmt(estReturns) + '</strong></div>' +
+            '<div class="r-row r-total"><span>Total value</span><strong>&#8377; ' + fmt(v) + '</strong></div>';
+        } else if (calcType === 'lumpsum') {
+          var estReturns = v - a;
+          box.innerHTML =
+            '<div class="r-row"><span>Invested amount</span><strong>&#8377; ' + fmt(a) + '</strong></div>' +
+            '<div class="r-row"><span>Est. returns</span><strong>&#8377; ' + fmt(estReturns) + '</strong></div>' +
+            '<div class="r-row r-total"><span>Total value</span><strong>&#8377; ' + fmt(v) + '</strong></div>';
+        } else if (calcType === 'fd') {
+          var estReturns = v - a;
+          box.innerHTML =
+            '<div class="r-row"><span>Invested amount</span><strong>&#8377; ' + fmt(a) + '</strong></div>' +
+            '<div class="r-row"><span>Est. returns</span><strong>&#8377; ' + fmt(estReturns) + '</strong></div>' +
+            '<div class="r-row r-total"><span>Total value</span><strong>&#8377; ' + fmt(v) + '</strong></div>';
+        } else if (calcType === 'rd') {
+          var totalInvest = a * c * 12;
+          var estReturns = v - totalInvest;
+          box.innerHTML =
+            '<div class="r-row"><span>Invested amount</span><strong>&#8377; ' + fmt(totalInvest) + '</strong></div>' +
+            '<div class="r-row"><span>Est. returns</span><strong>&#8377; ' + fmt(estReturns) + '</strong></div>' +
+            '<div class="r-row r-total"><span>Total value</span><strong>&#8377; ' + fmt(v) + '</strong></div>';
+        } else if (calcType === 'emi') {
+          // For EMI, variables are: a=loan, b=rate, c=tenure
+          var totalInterest = (v * c * 12) - a;
+          var totalAmount = v * c * 12;
+          box.innerHTML =
+            '<div class="r-row"><span>Monthly EMI</span><strong>&#8377; ' + fmt(v) + '</strong></div>' +
+            '<div class="r-row"><span>Principal amount</span><strong>&#8377; ' + fmt(a) + '</strong></div>' +
+            '<div class="r-row"><span>Total interest</span><strong>&#8377; ' + fmt(totalInterest) + '</strong></div>' +
+            '<div class="r-row r-total"><span>Total amount</span><strong>&#8377; ' + fmt(totalAmount) + '</strong></div>';
+        } else if (calcType === 'swp') {
+          // Handle the new SWP object structure
+          var finalBalance = typeof v === 'object' ? v.finalBalance : v;
+          var totalWithdrawal = typeof v === 'object' ? v.totalWithdrawal : b * d * 12;
+          var estimatedReturns = (finalBalance + totalWithdrawal) - a;
+          box.innerHTML =
+            '<div class="r-row"><span>Total investment</span><strong>&#8377; ' + fmt(a) + '</strong></div>' +
+            '<div class="r-row"><span>Total withdrawal</span><strong>&#8377; ' + fmt(totalWithdrawal) + '</strong></div>' +
+            '<div class="r-row"><span>Est. returns</span><strong>&#8377; ' + fmt(estimatedReturns) + '</strong></div>' +
+            '<div class="r-row r-total"><span>Final value</span><strong>&#8377; ' + fmt(finalBalance) + '</strong></div>';
+        } else if (calcType === 'goal') {
+          // Goal calculator results are handled in the switch statement
+          return;
+        } else if (calcType === 'retirement') {
+          // Retirement calculator results are handled in the switch statement
+          return;
+        } else if (calcType === 'inflation') {
+          // Inflation calculator results are handled in the switch statement
+          return;
+        } else if (calcType === 'tax') {
+          // Tax calculator results are handled in the switch statement
+          return;
+        } else {
+          box.innerHTML = '<div class="r-row"><span>' + calcs[calcType].label + '</span><strong>&#8377; ' + fmt(v) + '</strong></div>';
+        }
+      }
+      links.forEach(function (link) {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          render(link.getAttribute('data-calc'));
+          links.forEach(function (l) { l.classList.remove('active'); });
+          link.classList.add('active');
+          var feat = document.getElementById('calc-featured');
+          if (feat) {
+            var top = feat.getBoundingClientRect().top + window.pageYOffset - 90;
+            window.scrollTo({ top: top, behavior: 'smooth' });
+          }
+        });
+      });
+      render('sip');
+    })();
+
+    // FAQ / QUIZ HYBRID (faq-layout-4)
+    (function () {
+      var faqMode = document.getElementById('faqMode');
+      var quizMode = document.getElementById('quizMode');
+      var modeFaqBtn = document.getElementById('modeFaqBtn');
+      var modeQuizBtn = document.getElementById('modeQuizBtn');
+      var TE = '\u2713', CR = '\u2717';
+
+      if (modeFaqBtn && modeQuizBtn) {
+        function showFAQ() {
+          modeFaqBtn.classList.add('active'); modeFaqBtn.setAttribute('aria-selected', 'true');
+          modeQuizBtn.classList.remove('active'); modeQuizBtn.setAttribute('aria-selected', 'false');
+          faqMode.classList.remove('hidden');
+          quizMode.classList.remove('active');
+          quizMode.setAttribute('aria-hidden', 'true');
+          faqMode.setAttribute('aria-hidden', 'false');
+        }
+        function showQuiz() {
+          modeQuizBtn.classList.add('active'); modeQuizBtn.setAttribute('aria-selected', 'true');
+          modeFaqBtn.classList.remove('active'); modeFaqBtn.setAttribute('aria-selected', 'false');
+          faqMode.classList.add('hidden');
+          quizMode.classList.add('active');
+          quizMode.setAttribute('aria-hidden', 'false');
+          faqMode.setAttribute('aria-hidden', 'true');
+          quizMode.classList.add('visible');
+        }
+        modeFaqBtn.addEventListener('click', showFAQ);
+        modeQuizBtn.addEventListener('click', showQuiz);
+      }
+
+      // FAQ accordion (custom, no Bootstrap dependency)
+      document.querySelectorAll('.faq-card .faq-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var expanded = btn.getAttribute('aria-expanded') === 'true';
+          document.querySelectorAll('.faq-card .faq-btn').forEach(function (b) {
+            b.setAttribute('aria-expanded', 'false');
+            var p = b.nextElementSibling;
+            p.style.maxHeight = p.scrollHeight + 'px';
+            window.requestAnimationFrame(function () { p.style.maxHeight = '0'; });
+            p.classList.remove('open');
+          });
+          if (!expanded) {
+            btn.setAttribute('aria-expanded', 'true');
+            var panel = btn.nextElementSibling;
+            panel.classList.add('open');
+            panel.style.maxHeight = panel.scrollHeight + 'px';
+          }
+        });
+      });
+
+      // Quiz logic
+      var questions = document.querySelectorAll('.quiz-q');
+      var quizPrev = document.getElementById('quizPrev');
+      var quizNext = document.getElementById('quizNext');
+      var quizFill = document.getElementById('quizFill');
+      var quizProgressText = document.getElementById('quizProgressText');
+      var quizResult = document.getElementById('quizResult');
+      var quizScore = document.getElementById('quizScore');
+      var quizRetake = document.getElementById('quizRetake');
+      if (questions.length) {
+        var current = 0, score = 0;
+        var answered = new Array(questions.length).fill(false);
+
+        var explanations = [
+          'You can start an SIP with as little as ₹500 per month and step it up as your income grows.',
+          'A PMS is a personalized, SEBI-regulated portfolio with a dedicated manager, usually requiring a minimum of ₹50 lakh.',
+          'GIFT City is located in Gandhinagar, Gujarat — India\'s first International Financial Services Centre.',
+          'SWP stands for Systematic Withdrawal Plan — regular redemptions from your fund, ideal for retirement income.',
+          'KYC needs your PAN, Aadhaar, bank details, and a valid mobile/email — plus a FATCA/CRS declaration.',
+          'MJR Fin Wealth covers Mutual Funds, PMS, AIFs, SIFs, Bonds & NCDs, SIPs, Fixed Income, Loans, and GIFT City.',
+          'As per Budget 2024, LTCG above ₹1.25 lakh on equity funds is taxed at 12.5% (STCG at 20%). Always verify current rules.',
+          'Bonds and NCDs carry credit risk (issuer default) and interest-rate risk — match them to your tenure and risk comfort.'
+        ];
+
+        function showQuestion(idx) {
+          questions.forEach(function (q, i) { q.style.display = i === idx ? 'block' : 'none'; });
+          quizPrev.disabled = idx === 0;
+          quizNext.innerHTML = idx === questions.length - 1
+            ? 'Finish <i class="bi bi-check2"></i>'
+            : 'Next <i class="bi bi-chevron-right"></i>';
+          var pct = ((idx + 1) / questions.length) * 100;
+          quizFill.style.width = pct + '%';
+          quizProgressText.textContent = 'Question ' + (idx + 1) + ' of ' + questions.length;
+        }
+
+        questions.forEach(function (q, i) {
+          q.querySelectorAll('.quiz-opt').forEach(function (opt) {
+            opt.addEventListener('click', function () {
+              if (answered[i]) return;
+              answered[i] = true;
+              var correct = opt.getAttribute('data-correct') === 'true';
+              q.querySelectorAll('.quiz-opt').forEach(function (o) {
+                o.classList.add(o.getAttribute('data-correct') === 'true' ? 'correct' : 'incorrect');
+                o.disabled = true;
+              });
+              opt.classList.add('selected');
+              var fb = q.querySelector('.quiz-feedback');
+              fb.textContent = (correct ? TE + ' Correct! ' : CR + ' Incorrect. ') + explanations[i];
+              fb.className = 'quiz-feedback show' + (correct ? '' : ' incorrect');
+              if (correct) score++;
+            });
+          });
+        });
+
+        quizNext.addEventListener('click', function () {
+          if (current < questions.length - 1) {
+            current++;
+            showQuestion(current);
+          } else {
+            questions.forEach(function (q) { q.style.display = 'none'; });
+            quizNext.closest('.quiz-nav').style.display = 'none';
+            quizProgressText.closest('.quiz-progress').style.display = 'none';
+            quizResult.classList.add('show');
+            quizScore.textContent = score;
+          }
+        });
+
+        quizPrev.addEventListener('click', function () {
+          if (current > 0) { current--; showQuestion(current); }
+        });
+
+        quizRetake.addEventListener('click', function () {
+          current = 0; score = 0;
+          answered.fill(false);
+          questions.forEach(function (q) {
+            q.style.display = '';
+            q.querySelectorAll('.quiz-opt').forEach(function (o) {
+              o.classList.remove('selected', 'correct', 'incorrect');
+              o.disabled = false;
+            });
+            var fb = q.querySelector('.quiz-feedback');
+            fb.className = 'quiz-feedback';
+            fb.textContent = '';
+          });
+          quizNext.closest('.quiz-nav').style.display = 'flex';
+          quizProgressText.closest('.quiz-progress').style.display = 'block';
+          quizResult.classList.remove('show');
+          showQuestion(0);
+        });
+
+        showQuestion(0);
+      }
+    })();
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

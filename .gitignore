@@ -1,0 +1,10 @@
+# ===== Secrets / local config (NEVER commit the real one) =====
+mail_config.php
+
+# ===== Logs =====
+*.log
+
+# ===== OS / editor cruft =====
+.DS_Store
+Thumbs.db
+*.swp
