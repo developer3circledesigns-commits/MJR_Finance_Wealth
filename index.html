@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -762,6 +762,20 @@
   @media (max-width: 640px) {
     .ins-ticker-seg .t-item { font-size: 11px; }
   }
+  /* ---------- INSURANCE PARTNERS LOGO MARQUEE ---------- */
+  section.block.partners { padding: 16px 0 20px; background: #071E42; }
+  .partners-inner { text-align: center; padding: 0 24px; }
+  .partners-inner .eyebrow { display: inline-flex; align-items: center; gap: 9px; font-size: 12px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--blue); background: #E6EEFB; border: 1px solid #CBDCF7; padding: 8px 14px; margin-bottom: 14px; }
+  .partners-inner h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); line-height: 1.12; letter-spacing: -.03em; color: var(--navy-deep); margin-bottom: 42px; }
+  .pm-marquee { overflow: hidden; padding: 4px 0; }
+  .pm-track { display: flex; align-items: center; width: max-content; animation: pm-scroll 32s linear infinite; }
+  .pm-seg { display: flex; align-items: center; flex-shrink: 0; }
+  .pm-seg img { box-sizing: content-box; height: 42px; width: auto; max-width: 190px; display: block; object-fit: contain; background: transparent; border-radius: 12px; padding: 4px 10px; margin-right: 18px; filter: brightness(1.2); }
+  @keyframes pm-scroll { to { transform: translateX(-50%); } }
+  @media (max-width: 640px) {
+    .pm-seg img { box-sizing: content-box; height: 30px; max-width: 140px; padding: 3px 8px; margin-right: 14px; }
+    .partners-inner h2 { margin-bottom: 28px; }
+  }
 </style>
 </head>
 <body>
@@ -813,7 +827,6 @@
       </ul>
     </div>
   </section>
-
   <!-- ======= TRUST / PARTNERSHIP (glassmorphism dark) ======= -->
   <section class="block trust" id="trust">
     <div class="container">
@@ -1070,7 +1083,37 @@
       </div>
     </div>
   </section>
-
+  <!-- ======= INSURANCE PARTNERS LOGO MARQUEE ======= -->
+  <section class="block partners" id="partners">
+    <div class="pm-marquee" aria-hidden="true">
+      <div class="pm-track">
+        <div class="pm-seg">
+          <img src="marqueue%20logos/axis-max-life-insurance-logo.svg" alt="Axis Max Life Insurance" loading="lazy">
+          <img src="marqueue%20logos/bajaj_allianz.png" alt="Bajaj Allianz" loading="lazy">
+          <img src="marqueue%20logos/care_health_insurance_logo.svg" alt="Care Health Insurance" loading="lazy">
+          <img src="marqueue%20logos/logo_hdfc.png" alt="HDFC" loading="lazy">
+          <img src="marqueue%20logos/lombard-brand-logo.webp" alt="ICICI Lombard" loading="lazy">
+          <img src="marqueue%20logos/navHeader.svg" alt="Insurance brand logo" loading="lazy">
+          <img src="marqueue%20logos/niva-bupa-logo.svg" alt="Niva Bupa" loading="lazy">
+          <img src="marqueue%20logos/star_health_new_logo_Blue_6a4457e498.svg" alt="Star Health" loading="lazy">
+          <img src="marqueue%20logos/Tata_aia.svg" alt="Tata AIA" loading="lazy">
+          <img src="marqueue%20logos/TataAigLogoNew.svg" alt="Tata AIG" loading="lazy">
+        </div>
+        <div class="pm-seg">
+          <img src="marqueue%20logos/axis-max-life-insurance-logo.svg" alt="Axis Max Life Insurance" loading="lazy">
+          <img src="marqueue%20logos/bajaj_allianz.png" alt="Bajaj Allianz" loading="lazy">
+          <img src="marqueue%20logos/care_health_insurance_logo.svg" alt="Care Health Insurance" loading="lazy">
+          <img src="marqueue%20logos/logo_hdfc.png" alt="HDFC" loading="lazy">
+          <img src="marqueue%20logos/lombard-brand-logo.webp" alt="ICICI Lombard" loading="lazy">
+          <img src="marqueue%20logos/navHeader.svg" alt="Insurance brand logo" loading="lazy">
+          <img src="marqueue%20logos/niva-bupa-logo.svg" alt="Niva Bupa" loading="lazy">
+          <img src="marqueue%20logos/star_health_new_logo_Blue_6a4457e498.svg" alt="Star Health" loading="lazy">
+          <img src="marqueue%20logos/Tata_aia.svg" alt="Tata AIA" loading="lazy">
+          <img src="marqueue%20logos/TataAigLogoNew.svg" alt="Tata AIG" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
   <!-- ======= CALCULATORS ======= -->
   <section class="block calcs" id="calculators">
     <div class="container">
