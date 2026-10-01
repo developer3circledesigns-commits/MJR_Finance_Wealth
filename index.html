@@ -53,6 +53,9 @@
   .brand { font-size: 22px; font-weight: 800; color: #fff; letter-spacing: -.02em; flex-shrink: 0; }
   .brand span { color: var(--green); }
   .brand-logo { height: 60px; width: auto; max-width: 220px; display: block; object-fit: contain; }
+  .nav-brand { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
+  .nav-brand-divider { width: 1px; height: 44px; background: var(--line); flex-shrink: 0; }
+  .nav-partner-logo { height: 40px; width: auto; max-width: 146px; display: block; object-fit: contain; }
   .nav-links { display: flex; gap: 30px; align-items: center; margin-left: auto; }
   .nav-links a { color: #0b1b33; font-size: 15px; font-weight: 500; transition: color .15s ease; }
   .nav-links a:hover { color: var(--blue); }
@@ -60,6 +63,12 @@
   .nav-cta:hover { transform: translateY(-1px); color: #ffffff; }
   .menu-btn { display: none; background: none; border: 0; color: var(--blue); font-size: 26px; cursor: pointer; }
   .nav-call { display: none; align-items: center; justify-content: center; width: 44px; height: 44px; margin-left: auto; background: var(--green); color: #ffffff; border-radius: 50%; font-size: 19px; flex-shrink: 0; }
+
+  @media (max-width: 1200px) {
+    .nav-brand { gap: 10px; }
+    .nav-brand-divider { height: 34px; }
+    .nav-partner-logo { height: 32px; max-width: 116px; }
+  }
 
   /* ---------- HERO (09 Dark Blue) ---------- */
   .hero { min-height: calc(100vh - 76px); display: flex; flex-direction: column; align-items: flex-start; justify-content: center; text-align: left; padding: 60px 24px 60px 64px; position: relative; overflow: hidden; background: linear-gradient(135deg, #0A2F63 0%, #0E4DA4 100%); color: #fff; }
@@ -471,8 +480,8 @@
   .footer-col a:hover { color: var(--green); }
   .footer-bottom { border-top: 1px solid rgba(255,255,255,.1); padding-top: 24px; font-size: 13px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
   .social-links { display: flex; gap: 12px; margin-top: 18px; }
-  .social-links a { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,.1); color: #fff; border-radius: 50%; font-size: 18px; text-decoration: none; transition: background .15s ease, color .15s ease, transform .15s ease; }
-  .social-links a:hover { background: var(--green); color: #ffffff; transform: translateY(-2px); }
+  .social-links .social-icon { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,.1); color: #fff; border-radius: 50%; font-size: 18px; text-decoration: none; transition: background .15s ease, color .15s ease, transform .15s ease; }
+  .social-links .social-icon:hover { background: var(--green); color: #ffffff; transform: translateY(-2px); }
 
   /* ---------- TRUST / PARTNERSHIP (glassmorphism dark) ---------- */
   .trust { background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%); color: #fff; position: relative; overflow: hidden; }
@@ -515,6 +524,8 @@
     .hero { padding-top: 60px; min-height: calc(100vh - 70px); }
     .nav-inner { height: 70px; }
     .brand-logo { height: 54px; max-width: 190px; }
+    .nav-brand-divider { height: 32px; }
+    .nav-partner-logo { height: 30px; max-width: 110px; }
     .footer-brand .brand img { height: 64px; }
     /* collapse navbar into hamburger on tablets (desktop >1024 keeps full nav) */
     .nav-links {
@@ -546,6 +557,8 @@
     .container { padding: 0 20px; }
     .nav-inner { height: 64px; padding: 0 20px; }
     .brand-logo { height: 48px; max-width: 170px; }
+    .nav-brand-divider { height: 30px; }
+    .nav-partner-logo { height: 27px; max-width: 99px; }
     .footer-brand .brand img { height: 56px; }
     .section.block { padding: 76px 0; }
     .about { padding: 64px 0; }
@@ -573,6 +586,7 @@
   @media (max-width: 640px) {
     .nav-inner { height: 60px; padding: 0 20px; }
     .brand-logo { height: 44px; max-width: 160px; }
+    .nav-brand-divider, .nav-partner-logo { display: none; }
     .footer-brand .brand img { height: 48px; }
     .nav-links { top: 60px !important; }
     .calc-grid, .svc-grid, .steps { grid-template-columns: 1fr; }
@@ -790,7 +804,11 @@
   <!-- ======= NAV ======= -->
   <header>
     <div class="nav-inner">
+      <div class="nav-brand">
 <a href="#home" class="brand"><img class="brand-logo" src="images/logo.png" alt="MJR Fin Wealth Finance logo" width="220" height="60"></a>
+        <span class="nav-brand-divider" aria-hidden="true"></span>
+        <img class="nav-partner-logo" src="images/marque1/fi-partner-logo.svg" alt="FI Partner" width="146" height="40">
+      </div>
       <nav class="nav-links">
         <a href="#home">Home</a>
         <a href="#services">Products</a>
@@ -964,7 +982,7 @@
             <div class="svc-body">
               <h3>SIF</h3>
               <p>Access Specialized Investment Funds designed around different strategies and investment themes.</p>
-              <a href="./images/products/Sif.jpeg" target="_blank" class="view-details">View Details</a>
+              <a href="./images/products/SIF.pdf" target="_blank" class="view-details">View Details</a>
               <a href="https://www.partner.fundsindia.com/registration/partner-signup?Wca%252Bt5EUOf%252BCcMhgCAvADkLVUpMoi4JS5xBLDhVkPrwiuKMtWp%252FexvKbyyQVuLos=" target="_blank" class="link">Book For Free Consultation</a>
             </div>
           </div>
@@ -998,6 +1016,7 @@
             <div class="svc-body">
               <h3>Loans</h3>
               <p>Assistance in exploring financial solutions for various requirements, including home loans, business loans, personal loans, loans against property, and more.</p>
+              <a href="./images/products/loans.jpeg" target="_blank" class="view-details">View Details</a>
               <a href="https://frm.finfinity.co.in/?utm_campaign=292318" target="_blank" class="link">Book For Free Consultation</a>
             </div>
           </div>
@@ -1832,8 +1851,8 @@
 <a href="#home" class="brand"><img class="brand-logo" src="images/logo.png" alt="MJR Fin Wealth Finance logo" width="308" height="80"></a>
           <p>Your trusted partner in wealth creation and financial security. Personalized guidance for every goal.</p>
           <div class="social-links">
-            <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-            <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <span class="social-icon" aria-label="Instagram"><i class="bi bi-instagram"></i></span>
+            <span class="social-icon" aria-label="Facebook"><i class="bi bi-facebook"></i></span>
           </div>
         </div>
         <div class="footer-col">
