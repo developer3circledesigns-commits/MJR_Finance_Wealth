@@ -553,8 +553,6 @@
 
   /* ---------- TABLET PORTRAIT (<=768px) ---------- */
   @media (max-width: 768px) {
-    /* remove outline on hero heading text — mobile/tablet only, desktop untouched */
-    .hero h1 .green { -webkit-text-stroke: 0; paint-order: normal; text-shadow: none; }
     body { padding-top: 0; }
     .container { padding: 0 20px; }
     .nav-inner { height: 64px; padding: 0 20px; }
@@ -573,6 +571,9 @@
       height: auto;
     }
     .hero .inner { max-width: 100%; }
+    /* Why Choose Us: card icon + content centered on mobile/tablet-portrait only */
+    .w-card { text-align: center; }
+    .w-card .ic { margin: 0 auto 16px; }
     .info-panel, .form-panel { height: auto; }
     /* process zigzag: img containers alternate left/right with slide-in alignment */
     .pf-timeline::before { display: none; }
@@ -760,12 +761,18 @@
   .fd-cert-wrap { grid-column: 1 / -1; border-top: 1px solid var(--line); background: var(--surface); padding: 24px clamp(24px, 4vw, 46px); }
   .fd-cert { width: 100%; height: auto; display: block; }
   @media (max-width: 768px) {
-    .modal-box { grid-template-columns: 1fr; overflow-y: auto; }
-    .modal-media { min-height: 0; }
-    .modal-media img { position: static; width: 100%; height: 220px; min-height: 0; }
-    .modal-body { padding: 30px 22px; }
     .modal-overlay { padding: 14px; }
-    .modal-body .fd-name { font-size: 1.35rem; }
+    .modal-box { grid-template-columns: 1fr; overflow-y: auto; -webkit-overflow-scrolling: touch; max-height: calc(100vh - 28px); max-height: calc(100dvh - 28px); }
+    .modal-media { min-height: 0; }
+    .modal-media img { position: static; width: 100%; height: auto; max-height: 44vh; min-height: 0; object-fit: contain; object-position: center; background: var(--surface); }
+    .modal-body { padding: 28px 20px; }
+    .modal-body h3 { font-size: clamp(1.25rem, 5vw, 1.6rem); }
+    .modal-body .fd-name { font-size: 1.3rem; }
+    .fd-profile { padding: 16px 16px; }
+    .fd-contact { gap: 8px; }
+    .fd-contact li { flex-wrap: wrap; row-gap: 2px; max-width: 100%; }
+    .fd-contact a, .fd-contact span { overflow-wrap: anywhere; word-break: break-word; max-width: 100%; }
+    .fd-cert-wrap { padding: 20px 18px; }
   }
 
   /* ---------- QR LIGHTBOX ---------- */
@@ -907,6 +914,21 @@
     .contact .info-item { justify-content: flex-start; align-items: flex-start; text-align: left; max-width: 340px; margin-left: auto; margin-right: auto; margin-bottom: 20px; }
     .contact .info-item .ic { flex: none; margin: 0; }
     .contact .info-item > div:last-child { text-align: left; }
+
+    /* founder modal: fit small phone screens, nothing cropped or hidden */
+    .modal-overlay { padding: 12px; }
+    .modal-box { max-height: calc(100vh - 24px); max-height: calc(100dvh - 24px); }
+    .modal-media img { max-height: 40vh; }
+    .modal-body { padding: 24px 16px; }
+    .modal-body h3 { font-size: clamp(1.2rem, 5.5vw, 1.45rem); }
+    .modal-body .fd-name { font-size: 1.2rem; }
+    .fd-profile { padding: 14px 12px; margin-bottom: 14px; }
+    .fd-partner { font-size: 10.5px; padding: 5px 10px; letter-spacing: .1em; }
+    .fd-contact li { font-size: 13px; gap: 10px; }
+    .fd-contact i { font-size: 15px; width: 18px; }
+    .fd-badges { gap: 6px; margin-top: 16px; }
+    .fd-badges span { font-size: 11px; padding: 5px 10px; }
+    .fd-cert-wrap { padding: 16px 14px; }
   }
 
   /* Small phones */
@@ -941,8 +963,24 @@
     .quiz-q { padding: 20px 16px; }
     .quiz-options { grid-template-columns: 1fr; }
     .quiz-nav button, .quiz-result .retake { width: 100%; }
-    .modal-body { padding: 26px 16px; }
-    .fd-cert-wrap { padding: 18px 16px; }
+    .modal-overlay { padding: 10px; }
+    .btn-founder { width: 100%; max-width: 360px; justify-content: center; margin-left: auto; margin-right: auto; padding: 13px 16px; font-size: 14px; }
+    .modal-box { max-height: calc(100vh - 20px); max-height: calc(100dvh - 20px); }
+    .modal-media img { max-height: 36vh; }
+    .modal-body { padding: 22px 14px; }
+    .modal-body .eyebrow { font-size: 11px; }
+    .modal-body h3 { font-size: clamp(1.15rem, 6vw, 1.35rem); }
+    .modal-body .fd-name { font-size: 1.15rem; }
+    .fd-profile { padding: 12px 10px; }
+    .fd-partner { font-size: 10px; padding: 5px 9px; letter-spacing: .08em; }
+    .fd-role { font-size: 13px; }
+    .fd-contact { gap: 7px; }
+    .fd-contact li { font-size: 12.5px; gap: 8px; }
+    .fd-contact i { font-size: 14px; width: 16px; }
+    .fd-badges { gap: 5px; margin-top: 14px; margin-bottom: 8px; }
+    .fd-badges span { font-size: 10.5px; padding: 5px 9px; }
+    .modal-body .fd-risk { font-size: 11px; }
+    .fd-cert-wrap { padding: 14px 12px; }
     .qr-box { padding: 18px 14px; }
   }
 
@@ -959,6 +997,18 @@
     .pm-seg img { height: 26px; max-width: 120px; margin-right: 10px; }
     .marquee-items li img { height: 34px; max-width: 130px; }
     .band span { padding: 10px 16px; font-size: 11px; }
+
+    /* founder modal: tiny phones — compact, fully readable, no crop */
+    .modal-overlay { padding: 8px; }
+    .modal-box { max-height: calc(100vh - 16px); max-height: calc(100dvh - 16px); }
+    .modal-media img { max-height: 32vh; }
+    .modal-body { padding: 18px 12px; }
+    .modal-body h3 { font-size: 1.1rem; }
+    .modal-body .fd-name { font-size: 1.05rem; }
+    .fd-profile { padding: 12px 8px; }
+    .fd-contact li { font-size: 12px; gap: 7px; }
+    .fd-badges span { font-size: 10px; padding: 4px 8px; }
+    .fd-cert-wrap { padding: 12px 10px; }
   }
 
   /* Charts / schedules never overflow horizontally */
