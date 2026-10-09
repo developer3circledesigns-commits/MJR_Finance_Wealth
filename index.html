@@ -553,6 +553,8 @@
 
   /* ---------- TABLET PORTRAIT (<=768px) ---------- */
   @media (max-width: 768px) {
+    /* remove outline on hero heading text — mobile/tablet only, desktop untouched */
+    .hero h1 .green { -webkit-text-stroke: 0; paint-order: normal; text-shadow: none; }
     body { padding-top: 0; }
     .container { padding: 0 20px; }
     .nav-inner { height: 64px; padding: 0 20px; }
